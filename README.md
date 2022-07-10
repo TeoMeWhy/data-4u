@@ -15,7 +15,7 @@ Todos os códigos necessários e informações básicas sobre os dados serão di
 
 ## Como solicitar novos dados?
 
-Abra uma issue netse projeto com o seguinte template:
+Abra uma issue neste projeto com o seguinte template:
 
 ```
 Título: Nome da fonte de dados
