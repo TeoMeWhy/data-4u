@@ -1,0 +1,25 @@
+{
+    "censo_escolar": {
+        "encoding": "ISO-8859-1",
+        "format": "csv",
+        "raw_path": "/mnt/datalake/raw/educacao/censo_escolar/",
+        "sep": ";"
+    },
+    "enem": {
+        "encoding": "ISO-8859-1",
+        "format": "csv",
+        "raw_path": "/mnt/datalake/raw/educacao/enem/",
+        "sep": ";"
+    },
+    "gc": {
+        "format": "csv",
+        "raw_path": "/mnt/datalake/raw/gc/",
+        "sep": ","
+    },
+    "olist": {
+        "encoding": "ISO-8859-1",
+        "format": "csv",
+        "raw_path": "/mnt/datalake/raw/olist/",
+        "sep": ","
+    }
+}
