@@ -1,12 +1,13 @@
 # Databricks notebook source
+import json
+import os
+
+from pyspark.sql.types import *
+
 config = json.load(open("tables.json", 'r'))
 
 dbutils.widgets.removeAll()
 dbutils.widgets.dropdown("Datasource", "censo_escolar", config.keys())
-
-# COMMAND ----------
-
-import json
 
 # COMMAND ----------
 
@@ -21,14 +22,23 @@ print(f"Database: {database}")
 
 # COMMAND ----------
 
+def read_schema(path):
+    if os.path.exists(path):
+        schema = json.load(open(path,'r'))
+        return StructType.fromJson(schema)
+    else:
+        return None
+
 def get_file_tables(path):
     return [(i.path, i.name.split(".")[0]) for i in dbutils.fs.ls(path)]
 
-def ingestion(file_table, database, config):
+def ingestion(file_table, database, datasource, config):
     path, table = file_table
     database_table = f"{database}.{table}"
+
+    schema = read_schema(f"schemas/{datasource}/{table}.json")
     
-    df = prepare_read(config).load(path)
+    df = prepare_read(config, schema).load(path)
     
     (df.coalesce(1)
        .write
@@ -39,9 +49,12 @@ def ingestion(file_table, database, config):
     
     return df
   
-def prepare_read(config):
+def prepare_read(config, schema=None):
     
     reader = spark.read.format(config["format"])
+    
+    if schema != None:
+        reader = reader.schema(schema)
     
     if config["format"] in ["csv", "txt"]:
         reader = reader.option("header", "true")
@@ -59,4 +72,4 @@ def prepare_read(config):
 file_tables = get_file_tables(path)
 
 for f in file_tables:
-    ingestion(file_table=f, database=database, config=config)
+    ingestion(file_table=f, database=database, datasource=datasource, config=config)
