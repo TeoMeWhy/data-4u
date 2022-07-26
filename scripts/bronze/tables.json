@@ -17,7 +17,7 @@
         "sep": ","
     },
     "olist": {
-        "encoding": "ISO-8859-1",
+        "multiline": "true",
         "format": "csv",
         "raw_path": "/mnt/datalake/raw/olist/",
         "sep": ","

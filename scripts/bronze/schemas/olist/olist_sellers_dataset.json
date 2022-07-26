@@ -1,0 +1,29 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "seller_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "seller_zip_code_prefix",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "seller_city",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "seller_state",
+            "nullable": true,
+            "type": "string"
+        }
+    ],
+    "type": "struct"
+}

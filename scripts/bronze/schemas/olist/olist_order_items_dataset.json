@@ -1,0 +1,47 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "order_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "order_item_id",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "product_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "seller_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "shipping_limit_date",
+            "nullable": true,
+            "type": "timestamp"
+        },
+        {
+            "metadata": {},
+            "name": "price",
+            "nullable": true,
+            "type": "float"
+        },
+        {
+            "metadata": {},
+            "name": "freight_value",
+            "nullable": true,
+            "type": "float"
+        }
+    ],
+    "type": "struct"
+}

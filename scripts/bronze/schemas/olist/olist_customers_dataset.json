@@ -1,0 +1,35 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "customer_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "customer_unique_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "customer_zip_code_prefix",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "customer_city",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "customer_state",
+            "nullable": true,
+            "type": "string"
+        }
+    ],
+    "type": "struct"
+}

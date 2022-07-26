@@ -1,0 +1,35 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "geolocation_zip_code_prefix",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "geolocation_lat",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "geolocation_lng",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "geolocation_city",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "geolocation_state",
+            "nullable": true,
+            "type": "string"
+        }
+    ],
+    "type": "struct"
+}

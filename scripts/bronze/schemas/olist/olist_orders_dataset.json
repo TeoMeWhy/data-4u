@@ -1,0 +1,53 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "order_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "customer_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "order_status",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "order_purchase_timestamp",
+            "nullable": true,
+            "type": "timestamp"
+        },
+        {
+            "metadata": {},
+            "name": "order_approved_at",
+            "nullable": true,
+            "type": "timestamp"
+        },
+        {
+            "metadata": {},
+            "name": "order_delivered_carrier_date",
+            "nullable": true,
+            "type": "timestamp"
+        },
+        {
+            "metadata": {},
+            "name": "order_delivered_customer_date",
+            "nullable": true,
+            "type": "timestamp"
+        },
+        {
+            "metadata": {},
+            "name": "order_estimated_delivery_date",
+            "nullable": true,
+            "type": "timestamp"
+        }
+    ],
+    "type": "struct"
+}

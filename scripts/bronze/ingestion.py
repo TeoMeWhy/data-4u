@@ -64,6 +64,9 @@ def prepare_read(config, schema=None):
     
     if "encoding" in config:
         reader = reader.option("encoding", config["encoding"])
+        
+    if "multiline" in config:
+        reader = reader.option("multiline", "true")
     
     return reader
 
@@ -72,4 +75,5 @@ def prepare_read(config, schema=None):
 file_tables = get_file_tables(path)
 
 for f in file_tables:
+    print(f)
     ingestion(file_table=f, database=database, datasource=datasource, config=config)

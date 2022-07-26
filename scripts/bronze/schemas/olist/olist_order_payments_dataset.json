@@ -1,0 +1,35 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "order_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "payment_sequential",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "payment_type",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "payment_installments",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "payment_value",
+            "nullable": true,
+            "type": "float"
+        }
+    ],
+    "type": "struct"
+}

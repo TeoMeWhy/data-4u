@@ -1,0 +1,47 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "review_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "order_id",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "review_score",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "review_comment_title",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "review_comment_message",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "review_creation_date",
+            "nullable": true,
+            "type": "timestamp"
+        },
+        {
+            "metadata": {},
+            "name": "review_answer_timestamp",
+            "nullable": true,
+            "type": "timestamp"
+        }
+    ],
+    "type": "struct"
+}
