@@ -18,9 +18,17 @@ GRANT USAGE ON DATABASE `bronze_gc` TO `apoiadores`;
 GRANT SELECT ON DATABASE `bronze_gc` TO `apoiadores`;
 GRANT READ_METADATA ON DATABASE `bronze_gc` TO `apoiadores`;
 
+GRANT USAGE ON DATABASE `silver_gc` TO `apoiadores`;
+GRANT SELECT ON DATABASE `silver_gc` TO `apoiadores`;
+GRANT READ_METADATA ON DATABASE `silver_gc` TO `apoiadores`;
+
 -- COMMAND ----------
 
 -- DBTITLE 1,Olist
 GRANT USAGE ON DATABASE `bronze_olist` TO `apoiadores`;
 GRANT SELECT ON DATABASE `bronze_olist` TO `apoiadores`;
 GRANT READ_METADATA ON DATABASE `bronze_olist` TO `apoiadores`;
+
+GRANT USAGE ON DATABASE `silver_olist` TO `apoiadores`;
+GRANT SELECT ON DATABASE `silver_olist` TO `apoiadores`;
+GRANT READ_METADATA ON DATABASE `silver_olist` TO `apoiadores`;
