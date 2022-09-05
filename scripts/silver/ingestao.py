@@ -27,7 +27,7 @@ def ingestion_many(database):
     tables = [i.split(".")[0] for i in os.listdir(database)]
     for t in tables:
         print(t)
-        ingestion(database, table)
+        ingestion(database, t)
 
 # COMMAND ----------
 

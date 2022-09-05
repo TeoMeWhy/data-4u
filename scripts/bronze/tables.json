@@ -21,5 +21,11 @@
         "format": "csv",
         "raw_path": "/mnt/datalake/raw/olist/",
         "sep": ","
+    },
+    "tse": {
+        "encoding": "latin1",
+        "format": "csv",
+        "raw_path": "/mnt/datalake/raw/tse/",
+        "sep": ";"
     }
 }

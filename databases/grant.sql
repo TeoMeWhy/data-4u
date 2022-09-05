@@ -32,3 +32,14 @@ GRANT READ_METADATA ON DATABASE `bronze_olist` TO `apoiadores`;
 GRANT USAGE ON DATABASE `silver_olist` TO `apoiadores`;
 GRANT SELECT ON DATABASE `silver_olist` TO `apoiadores`;
 GRANT READ_METADATA ON DATABASE `silver_olist` TO `apoiadores`;
+
+-- COMMAND ----------
+
+-- DBTITLE 1,TSE
+GRANT USAGE ON DATABASE `bronze_tse` TO `apoiadores`;
+GRANT SELECT ON DATABASE `bronze_tse` TO `apoiadores`;
+GRANT READ_METADATA ON DATABASE `bronze_tse` TO `apoiadores`;
+
+GRANT USAGE ON DATABASE `silver_tse` TO `apoiadores`;
+GRANT SELECT ON DATABASE `silver_tse` TO `apoiadores`;
+GRANT READ_METADATA ON DATABASE `silver_tse` TO `apoiadores`;
