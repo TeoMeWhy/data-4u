@@ -36,7 +36,7 @@ def ingestion(file_table, database, datasource, config):
     path, table = file_table
     database_table = f"{database}.{table}"
 
-    schema = read_schema(f"schemas/{datasource}/{table}.json")
+    schema = read_schema(f"schemas/{datasource}/{table}.json".lower())
     
     df = prepare_read(config, schema).load(path)
     
@@ -67,7 +67,7 @@ def prepare_read(config, schema=None):
         
     if "multiline" in config:
         reader = reader.option("multiline", "true")
-    
+
     return reader
 
 # COMMAND ----------

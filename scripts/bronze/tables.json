@@ -23,6 +23,7 @@
         "sep": ","
     },
     "tse": {
+        "multiline": "true",
         "encoding": "latin1",
         "format": "csv",
         "raw_path": "/mnt/datalake/raw/tse/",
