@@ -12,6 +12,7 @@ Todos os códigos necessários e informações básicas sobre os dados serão di
 |Enem|Microdados do Enem|[:link:](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem)|bronze_enem|
 |Gamers Club|Estatísticas de partidas, medalhas, players|[:link:](https://www.kaggle.com/datasets/gamersclub/brazilian-csgo-plataform-dataset-by-gamers-club)|bronze_gc|
 |Olist|Vendas e-commerce|[:link:](https://www.kaggle.com/datasets/gamersclub/brazilian-csgo-plataform-dataset-by-gamers-club)|bronze_olist|
+|TSE|Eleições|[:link:](https://dadosabertos.tse.jus.br/dataset/)|bronze_tse, silver_tse|
 
 ## Como solicitar novos dados?
 
