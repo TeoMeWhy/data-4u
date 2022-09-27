@@ -9,7 +9,7 @@ df_full = (df_1.unionByName(df_2, allowMissingColumns=True)
 (df_full.coalesce(1)
         .write
         .mode("overwrite")
-        .format("delta") 
+        .format("delta")
         .option("overwriteSchema","true")
         .partitionBy("ANO_ELEICAO")
         .saveAsTable("silver_tse.candidatura_brasil"))

@@ -30,7 +30,7 @@ def read_schema(path):
         return None
 
 def get_file_tables(path):
-    return [(i.path, i.name.split(".")[0]) for i in dbutils.fs.ls(path)]
+    return [(i.path, i.name.split(".")[0]) for i in dbutils.fs.ls(path) if "." in i.path]
 
 def ingestion(file_table, database, datasource, config):
     path, table = file_table
@@ -73,7 +73,6 @@ def prepare_read(config, schema=None):
 # COMMAND ----------
 
 file_tables = get_file_tables(path)
-
 for f in file_tables:
     print(f)
     ingestion(file_table=f, database=database, datasource=datasource, config=config)
