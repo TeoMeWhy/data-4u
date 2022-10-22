@@ -1,0 +1,107 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "anomes",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "ibge",
+            "nullable": true,
+            "type": "string"
+        },
+        {
+            "metadata": {},
+            "name": "pab_extraordinario_qtd_fam_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_extraordinario_valor_medio_d",
+            "nullable": true,
+            "type": "double"
+        },
+        {
+            "metadata": {},
+            "name": "pab_extraordinario_valor_pago_d",
+            "nullable": true,
+            "type": "double"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_beneficios_comp_familiar_adolescente_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_beneficios_comp_familiar_crianca_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_beneficios_comp_familiar_gestante_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_beneficios_comp_familiar_jovem_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_beneficios_compensatorio_transitorio_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_beneficios_primeira_infancia_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_beneficios_superacao_extr_pobreza_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_qtd_fam_benef_i",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "pab_valor_medio_d",
+            "nullable": true,
+            "type": "double"
+        },
+        {
+            "metadata": {},
+            "name": "pab_valor_pago_d",
+            "nullable": true,
+            "type": "double"
+        },
+        {
+            "metadata": {},
+            "name": "qtd_familias_beneficiarias_bolsa_familia",
+            "nullable": true,
+            "type": "long"
+        },
+        {
+            "metadata": {},
+            "name": "valor_repassado_bolsa_familia",
+            "nullable": true,
+            "type": "double"
+        }
+    ],
+    "type": "struct"
+}

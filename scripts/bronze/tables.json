@@ -28,5 +28,10 @@
         "format": "csv",
         "raw_path": "/mnt/datalake/raw/tse/",
         "sep": ";"
+    },
+    "ministerio_cidadania": {
+        "multiline": "true",
+        "format": "json",
+        "raw_path": "/mnt/datalake/raw/ministerio_cidadania/"
     }
 }
