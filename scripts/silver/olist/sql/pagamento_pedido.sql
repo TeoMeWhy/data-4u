@@ -5,4 +5,4 @@ select
   int(payment_installments) as nrPacelas,
   float(payment_value) as vlPagamento
 
-from bronze_olist.order_payments
+from bronze_olist.olist_order_payments

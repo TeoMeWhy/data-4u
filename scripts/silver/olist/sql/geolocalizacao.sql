@@ -5,4 +5,4 @@ select
   geolocation_city as descCidade,
   geolocation_state as descUF
 
-from bronze_olist.geolocation
+from bronze_olist.olist_geolocation

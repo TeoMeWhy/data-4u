@@ -4,4 +4,4 @@ select
   seller_city as descCidade,
   seller_state as descUF
 
-from bronze_olist.sellers
+from bronze_olist.olist_sellers
