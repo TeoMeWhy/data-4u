@@ -17,7 +17,7 @@ def ingestion_table(table_name):
      .mode("overwrite")
      .format("delta")
      .option("overwriteSchema", "true")
-     .saveAsTable(f"silver_olist.{table_name}"))
+     .saveAsTable(f"silver.olist.{table_name}"))
 
 # COMMAND ----------
 

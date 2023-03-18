@@ -5,4 +5,4 @@ select
   customer_city as descCidade,
   customer_state as descUF
 
-from bronze_olist.olist_customers
+from bronze.olist.olist_customers_dataset
