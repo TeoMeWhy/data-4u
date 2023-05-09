@@ -12,12 +12,12 @@ def ingestion_table(table_name):
     query = import_query(f"sql/{table_name}.sql")
 
     (spark.sql(query)
-     .coalesce(1)     
-     .write
-     .mode("overwrite")
-     .format("delta")
-     .option("overwriteSchema", "true")
-     .saveAsTable(f"silver.olist.{table_name}"))
+          .coalesce(1)     
+          .write
+          .mode("overwrite")
+          .format("delta")
+          .option("overwriteSchema", "true")
+          .saveAsTable(f"silver.olist.{table_name}"))
 
 # COMMAND ----------
 
