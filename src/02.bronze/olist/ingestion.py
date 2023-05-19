@@ -11,13 +11,13 @@ import dbtools
 # DBTITLE 1,Setup
 database_name = 'bronze.olist'
 table_name = dbutils.widgets.get('table_name')
-file_format = dbutils.widgets.get('file_format')
+file_format = 'csv'
 id_fields = []
 timestamp_field = ''
 partition_fields = ''
 
 path_full_load = f"/mnt/datalake/olist/{table_name}.csv"
-path_incremental = f"/mnt/datalake/olist/{table_name}.csv"
+path_incremental = ''
 
 # COMMAND ----------
 
@@ -38,7 +38,15 @@ ingest = IngestaoBronze(
 # COMMAND ----------
 
 # DBTITLE 1,Carga full-load
-if not dbtools.table_exists(spark, 'bronze.tabnews', 'contents'):
+if not dbtools.table_exists(spark, database_name, table_name):
     print("Tabela não existente, realizando primeira carga...")
-    ingest.process_full()
+
+    options = {
+        "header": "true",
+        "multiLine": "true",
+        "sep": ",",
+    }
+    
+    ingest.process_full(**options)
     print("Ok")
+

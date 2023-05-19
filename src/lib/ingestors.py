@@ -52,11 +52,12 @@ class IngestaoBronze:
             print("ok")
         self.schema = schema
 
-    def load_full(self):
+    def load_full(self, **options):
 
         reader = (self.spark
                       .read
-                      .format(self.file_format))
+                      .format(self.file_format)
+                      .options(**options))
                   
         if self.schema != None:
             reader = reader.schema(self.schema)
@@ -77,8 +78,8 @@ class IngestaoBronze:
 
         writer.saveAsTable(self.table_fullname)
 
-    def process_full(self):
-        df = self.load_full()
+    def process_full(self, **options):
+        df = self.load_full(**options)
         view_name_tmp = f"tb_full_{self.table_name}"
         df.createOrReplaceTempView(view_name_tmp)
         df_transform = self.transform(view_name_tmp)
