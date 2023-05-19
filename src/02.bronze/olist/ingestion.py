@@ -1,38 +1,44 @@
 # Databricks notebook source
-from pyspark.sql.types import StructType
-import json
-import os
+import sys
 
-def read_schema(path):
-    with open(path, "r") as open_file:
-        data = json.load(open_file)
-    return StructType.fromJson(data)
+sys.path.insert(0, '../../lib/')
 
-def read_data(table):
-    
-    schema = read_schema(f"schemas/{table}.json")
-    
-    df = (spark.read
-               .schema(schema)
-               .format("csv")
-               .option("header", "true")
-               .option("multiLine", "true")
-               .option("sep", ",")
-               .load(f"/mnt/datalake/raw/olist/{table}.csv"))
-    return df
-
-def save_data(df, table):
-    (df.coalesce(1)
-       .write
-       .mode("overwrite")
-       .format("delta")
-       .option("overwriteSchema", "true")
-       .saveAsTable(f"bronze.olist.{table}"))
+from ingestors import IngestaoBronze
+import dbtools
 
 # COMMAND ----------
 
-tables = [i.replace(".json", "") for i in os.listdir("schemas") if i.endswith(".json")]
+# DBTITLE 1,Setup
+database_name = 'bronze.olist'
+table_name = dbutils.widgets.get('table_name')
+file_format = dbutils.widgets.get('file_format')
+id_fields = []
+timestamp_field = ''
+partition_fields = ''
 
-for t in tables:
-    df = read_data(t)
-    save_data(df, t)
+path_full_load = f"/mnt/datalake/olist/{table_name}.csv"
+path_incremental = f"/mnt/datalake/olist/{table_name}.csv"
+
+# COMMAND ----------
+
+# DBTITLE 1,Instanciando ingestor
+
+ingest = IngestaoBronze(
+            path_full_load = path_full_load,
+            path_incremental = path_incremental,
+            file_format = file_format,
+            table_name = table_name,
+            database_name = database_name,
+            id_fields = id_fields,
+            timestamp_field = timestamp_field,
+            partition_fields = partition_fields,
+            spark = spark,
+            )
+
+# COMMAND ----------
+
+# DBTITLE 1,Carga full-load
+if not dbtools.table_exists(spark, 'bronze.tabnews', 'contents'):
+    print("Tabela não existente, realizando primeira carga...")
+    ingest.process_full()
+    print("Ok")
