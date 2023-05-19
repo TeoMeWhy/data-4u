@@ -10,11 +10,11 @@ import dbtools
 
 # DBTITLE 1,Setup
 database_name = 'bronze.tabnews'
-table_name = 'contents'
-file_format = 'json'
-id_fields = ['id']
-timestamp_field = 'updated_at'
-partition_fields = []
+table_name = dbutils.widgets.get('table_name')
+file_format = dbutils.widgets.get('file_format')
+id_fields = dbutils.widgets.get('id_fields').split(',')
+timestamp_field = dbutils.widgets.get('timestamp_field')
+partition_fields = dbutils.widgets.get('partition_fields').split(',')
 
 path_full_load = f"/mnt/datalake/tabnews/{table_name}/"
 path_incremental = f"/mnt/datalake/tabnews/{table_name}/"
