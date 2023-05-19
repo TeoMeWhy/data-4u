@@ -50,6 +50,8 @@ class Ingestor:
             
             self.params['page'] += 1
             datetime_start = datetime.datetime.fromisoformat(data[-1]['created_at']).date()
+            if len(data) == 0:
+                break
 
 
 def main():

@@ -82,11 +82,7 @@ class Ingestor:
 
 def collect(endpoint, delay, **params):
     client_secret = os.getenv("CLIENT_SECRET")
-    print(client_secret)
-
     client_id = os.getenv("CLIENT_ID")
-    print(client_id)
-
 
     if not os.path.exists(f"data/{endpoint}"):
         os.mkdir(f"data/{endpoint}")
