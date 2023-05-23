@@ -8,3 +8,8 @@ CREATE DATABASE IF NOT EXISTS silver.olist;
 -- DBTITLE 1,IGDB
 CREATE DATABASE IF NOT EXISTS bronze.igdb;
 CREATE DATABASE IF NOT EXISTS silver.igdb;
+
+-- COMMAND ----------
+
+-- DBTITLE 1,LinuxTips
+CREATE DATABASE IF NOT EXISTS bronze.linuxtips;

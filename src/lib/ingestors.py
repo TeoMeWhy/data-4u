@@ -15,6 +15,7 @@ class IngestaoBronze:
         id_fields,
         timestamp_field,
         partition_fields,
+        read_options,
         spark,
     ):
         self.path_full_load = path_full_load
@@ -25,6 +26,7 @@ class IngestaoBronze:
         self.id_fields = id_fields
         self.timestamp_field = timestamp_field
         self.partition_fields = partition_fields
+        self.read_options = read_options
         self.spark = spark
 
         self.table_fullname = f"{self.database_name}.{self.table_name}"
@@ -52,12 +54,12 @@ class IngestaoBronze:
             print("ok")
         self.schema = schema
 
-    def load_full(self, **options):
+    def load_full(self):
 
         reader = (self.spark
                       .read
                       .format(self.file_format)
-                      .options(**options))
+                      .options(**self.read_options))
                   
         if self.schema != None:
             reader = reader.schema(self.schema)
@@ -78,8 +80,8 @@ class IngestaoBronze:
 
         writer.saveAsTable(self.table_fullname)
 
-    def process_full(self, **options):
-        df = self.load_full(**options)
+    def process_full(self):
+        df = self.load_full()
         view_name_tmp = f"tb_full_{self.table_name}"
         df.createOrReplaceTempView(view_name_tmp)
         df_transform = self.transform(view_name_tmp)
