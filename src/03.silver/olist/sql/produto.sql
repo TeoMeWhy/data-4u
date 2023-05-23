@@ -9,4 +9,4 @@ select
   int(product_height_cm) as vlAlturaCm,
   int(product_width_cm) as vlLarguraCm
 
-from bronze.olist.olist_products_dataset
+from bronze.olist.products

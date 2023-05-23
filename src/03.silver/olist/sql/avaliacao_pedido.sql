@@ -7,4 +7,4 @@ select
   to_timestamp(review_creation_date) as dtAvaliacao,
   to_timestamp(review_answer_timestamp) as dtResposta
 
-from bronze.olist.olist_order_reviews_dataset
+from bronze.olist.order_reviews

@@ -7,4 +7,4 @@ select
     float(price) as vlPreco,
     float(freight_value) as vlFrete
 
-from bronze.olist.olist_order_items_dataset
+from bronze.olist.order_items

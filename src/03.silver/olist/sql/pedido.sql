@@ -8,4 +8,4 @@ select
   to_timestamp(order_delivered_customer_date) as dtEntregue,
   to_timestamp(order_estimated_delivery_date) as dtEstimativaEntrega
 
-from bronze.olist.olist_orders_dataset
+from bronze.olist.orders
