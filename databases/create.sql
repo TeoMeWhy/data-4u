@@ -13,3 +13,4 @@ CREATE DATABASE IF NOT EXISTS silver.igdb;
 
 -- DBTITLE 1,LinuxTips
 CREATE DATABASE IF NOT EXISTS bronze.linuxtips;
+CREATE DATABASE IF NOT EXISTS silver.linuxtips;
