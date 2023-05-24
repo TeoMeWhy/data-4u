@@ -1,3 +1,3 @@
 data/*.json
 .env
-*/credentials.json
+src/01.raw/linuxtips/credentials.json
