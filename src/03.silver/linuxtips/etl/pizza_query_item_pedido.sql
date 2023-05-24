@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS silver.linuxtips.pizza_query_pedidos;
+DROP TABLE IF EXISTS silver.linuxtips.pizza_query_item_pedido;
 
-CREATE TABLE IF NOT EXISTS silver.linuxtips.pizza_query_pedidos
+CREATE TABLE IF NOT EXISTS silver.linuxtips.pizza_query_item_pedido
+
 WITH tb_explode_queijo AS (
     SELECT id,
           queijo_1,
@@ -56,7 +57,6 @@ tb_ingredientes AS (
 tb_final AS (
 
     SELECT int(t1.id) AS idPedido,
-          to_timestamp(t1.updated_at, 'dd/MM/yyyy HH:mm:ss') AS dtPedido,
           
           lower(trim(t1.tipo_massa))  AS descTipoMassa,
           lower(trim(t1.borda_recheada))  AS descTipoBorda,
@@ -67,14 +67,7 @@ tb_final AS (
           lower(trim(t3.descIngrediente3)) AS descIngrediente3,
           lower(trim(t3.descIngrediente4)) AS descIngrediente4,
           lower(trim(t3.descIngrediente5)) AS descIngrediente5,
-          lower(trim(t1.bebida))  AS descBebida,
-
-            CASE WHEN t1.ketchup = 'Sim!' THEN TRUE
-                WHEN t1.ketchup = 'Não!' THEN FALSE
-            END AS flKetchup,
-
-            t1.estado AS descUF,
-            t1.recado_pizzaiolo AS txtRecado
+          lower(trim(t1.bebida))  AS descBebida
 
     FROM bronze.linuxtips.pizza_query_forms AS t1
 
@@ -85,8 +78,90 @@ tb_final AS (
     ON t1.id = t3.id
 
     WHERE t1.id IS NOT null
+),
+
+tb_full AS (
+
+  SELECT t1.idPedido,
+        'massa' AS descTipoItem,
+        descTipoMassa AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'borda' AS descTipoItem,
+        descTipoBorda AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'queijo 1' AS descTipoItem,
+        descQueijo1 AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'queijo 2' AS descTipoItem,
+        descQueijo2 AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'ingrediente 1' AS descTipoItem,
+        descIngrediente1 AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'ingrediente 2' AS descTipoItem,
+        descIngrediente2 AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'ingrediente 3' AS descTipoItem,
+        descIngrediente3 AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'ingrediente 4' AS descTipoItem,
+        descIngrediente4 AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'ingrediente 5' AS descTipoItem,
+        descIngrediente5 AS descItem
+
+  FROM tb_final as t1
+
+  UNION ALL
+
+  SELECT t1.idPedido,
+        'bebida' AS descTipoIngrediente,
+        descBebida AS descItem
+
+  FROM tb_final as t1
 
 )
 
-SELECT *
-from tb_final;
+SELECT * FROM tb_full
+WHERE descItem IS NOT NULL AND descItem <> 'n/a'
+ORDER BY 1, 2

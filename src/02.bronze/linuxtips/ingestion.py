@@ -7,17 +7,22 @@ from ingestors import IngestaoBronze
 
 # COMMAND ----------
 
+# dbutils.widgets.dropdown('table_name', 'forms', choices=['forms', 'produtos'])
 
-path_full_load = '/mnt/datalake/linuxtips/pizza_query_forms'
-path_incremental = '/mnt/datalake/linuxtips/pizza_query_forms'
+# COMMAND ----------
+
+table_origin = dbutils.widgets.get('table_name')
+
+path_full_load = f'/mnt/datalake/linuxtips/pizza_query_{table_origin}'
+path_incremental = f'/mnt/datalake/linuxtips/pizza_query_{table_origin}'
 file_format = 'csv'
-table_name = 'pizza_query_forms'
+table_name = f'pizza_query_{table_origin}'
 database_name = 'bronze.linuxtips'
 id_fields = ['id']
 timestamp_field = 'updated_at'
 partition_fields = ''
 
-options = {'header':'true', 'sep':';'}
+options = {'header':'true', 'sep':';', 'multiLine': 'true'}
 
 # COMMAND ----------
 

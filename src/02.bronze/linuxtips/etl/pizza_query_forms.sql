@@ -16,3 +16,5 @@ SELECT
   `Algum recado para os pizzaiolo Jeferson Fernando e Téo Calvo?` AS recado_pizzaiolo
 
   FROM {table}
+
+  QUALIFY row_number() OVER (PARTITION BY `index` ORDER BY `Carimbo de data/hora`) = 1
