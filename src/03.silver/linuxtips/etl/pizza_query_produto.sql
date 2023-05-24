@@ -14,4 +14,4 @@ WITH tb_final AS (
  
  )
 
- SELECT * FROM tb_final
+ SELECT * FROM tb_final;

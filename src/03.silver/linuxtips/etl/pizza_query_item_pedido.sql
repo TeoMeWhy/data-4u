@@ -164,4 +164,4 @@ tb_full AS (
 
 SELECT * FROM tb_full
 WHERE descItem IS NOT NULL AND descItem <> 'n/a'
-ORDER BY 1, 2
+ORDER BY 1, 2;
