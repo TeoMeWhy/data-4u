@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS silver.linuxtips.pizza_query_item_pedido;
+DROP TABLE IF EXISTS silver.pizza_query.item_pedido;
 
-CREATE TABLE IF NOT EXISTS silver.linuxtips.pizza_query_item_pedido
+CREATE TABLE IF NOT EXISTS silver.pizza_query.item_pedido
 
 WITH tb_explode_queijo AS (
     SELECT id,

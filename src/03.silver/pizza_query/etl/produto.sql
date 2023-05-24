@@ -1,7 +1,7 @@
 
-DROP TABLE IF EXISTS silver.linuxtips.pizza_query_produto;
+DROP TABLE IF EXISTS silver.pizza_query.produto;
 
-CREATE TABLE IF NOT EXISTS silver.linuxtips.pizza_query_produto
+CREATE TABLE IF NOT EXISTS silver.pizza_query.produto
 WITH tb_final AS (
 
   SELECT lower(ingrediente) as descItem,

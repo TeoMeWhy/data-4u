@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS silver.linuxtips.pizza_query_pedido;
+DROP TABLE IF EXISTS silver.pizza_query.pedido;
 
-CREATE TABLE IF NOT EXISTS silver.linuxtips.pizza_query_pedido
+CREATE TABLE IF NOT EXISTS silver.pizza_query.pedido
 
 WITH tb_final AS (
 
