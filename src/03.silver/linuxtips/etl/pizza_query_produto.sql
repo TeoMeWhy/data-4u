@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS silver.linuxtips.pizza_query_produto;
 CREATE TABLE IF NOT EXISTS silver.linuxtips.pizza_query_produto
 WITH tb_final AS (
 
-  SELECT lower(ingrediente) as descIngrediente,
+  SELECT lower(ingrediente) as descItem,
         float(replace(valor, ',', '.')) as vlPreco
 
   FROM bronze.linuxtips.pizza_query_produtos
