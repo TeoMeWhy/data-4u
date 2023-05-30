@@ -107,7 +107,7 @@ def file_to_s3(filepath, s3_client, bucket_name):
 
     with open(filepath) as open_file:
             data = json.dumps(json.load(open_file), indent=3)
-            s3_client.put_object(Body=data, Bucket='platform-datalake-teomewhy', Key=s3_path)
+            s3_client.put_object(Body=data, Bucket=bucket_name, Key=s3_path)
     os.remove(filepath)
 
 
@@ -115,7 +115,9 @@ def files_to_s3(filepaths):
 
     bucket_name = os.getenv("BUCKET_NAME")
 
-    client = boto3.client('s3')
+    session = boto3.Session(profile_name=PROFILE_AWS)
+
+    client = session.client('s3')
     for i in tqdm(filepaths):
         file_to_s3(i, client, bucket_name)
 
@@ -127,25 +129,25 @@ def export(endpoint, n_jobs=1):
         pool.map(files_to_s3, slices)
 
 
-def main():
+parser = argparse.ArgumentParser()
+parser.add_argument('--endpoint', type=str)
+parser.add_argument('--mode', type=str, choices=['collect', 'export', 'all'])
+parser.add_argument('--delay', type=int, default=1)
+parser.add_argument('--n_jobs', type=int, default=1)
+parser.add_argument('--profile_aws', type=str)
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--endpoint', type=str)
-    parser.add_argument('--mode', type=str, choices=['collect', 'export', 'all'])
-    parser.add_argument('--delay', type=int, default=1)
-    parser.add_argument('--n_jobs', type=int, default=1)
-    args = parser.parse_args()
+args = parser.parse_args()
 
-    if args.mode == 'collect':
-        collect(args.endpoint, delay=args.delay)
+PROFILE_AWS = args.profile_aws
 
-    elif args.mode == 'export':
-        export(args.endpoint, args.n_jobs)
+dotenv.load_dotenv(dotenv.find_dotenv('.env'))
 
-    elif args.mode == 'all':
-        collect(args.endpoint, delay=args.delay)
-        export(args.endpoint, args.n_jobs)
+if args.mode == 'collect':
+    collect(args.endpoint, delay=args.delay)
 
-if __name__ == '__main__':
-    dotenv.load_dotenv(dotenv.find_dotenv('.env'))
-    main()
+elif args.mode == 'export':
+    export(args.endpoint, args.n_jobs)
+
+elif args.mode == 'all':
+    collect(args.endpoint, delay=args.delay)
+    export(args.endpoint, args.n_jobs)
