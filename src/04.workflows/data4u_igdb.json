@@ -1,0 +1,277 @@
+{
+    "name": "data4u_igdb",
+    "email_notifications": {
+        "no_alert_for_skipped_runs": false
+    },
+    "webhook_notifications": {},
+    "timeout_seconds": 0,
+    "max_concurrent_runs": 1,
+    "tasks": [
+        {
+            "task_key": "bronze_characters",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "characters",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_collections",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "collections",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_companies",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "companies",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_franchises",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "franchises",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_games",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "games",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_game_modes",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "game_modes",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_game_versions",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "game_versions",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_genres",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "genres",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_languages",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "languages",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_language_supports",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "language_supports",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_platforms",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "platforms",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_regions",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "regions",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_themes",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "themes",
+                    "id_fields": "checksum",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        }
+    ],
+    "git_source": {
+        "git_url": "https://github.com/teomewhy/data-4u",
+        "git_provider": "gitHub",
+        "git_branch": "main"
+    },
+    "format": "MULTI_TASK"
+}
