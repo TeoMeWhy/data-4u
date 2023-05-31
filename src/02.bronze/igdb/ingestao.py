@@ -39,6 +39,7 @@ ingestao = IngestaoBronze(
 # DBTITLE 1,Full Load
 if not dbtools.table_exists(spark, database_name, table):
     df_null = spark.createDataFrame(data=[], schema=ingestao.schema)
+    ingestao.save_full(df_null)
     dbutils.fs.rm(ingestao.checkpoint_path, True)
 
 # COMMAND ----------
