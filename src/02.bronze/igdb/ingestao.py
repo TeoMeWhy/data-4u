@@ -8,14 +8,14 @@ import dbtools
 
 # COMMAND ----------
 
-table = 'games'
+table = dbutils.widgets.get('table')
 path_full_load=f'/mnt/datalake/igdb/{table}'
 path_incremental=f'/mnt/datalake/igdb/{table}'
 file_format='json'
 table_name=table
 database_name='bronze.igdb'
-id_fields=['id']
-timestamp_field='updated_at'
+id_fields=dbutils.widgets.get('id_fields').split(",")
+timestamp_field=dbutils.widgets.get('timestamp_field')
 partition_fields=[]
 read_options = {'multiLine': 'true'}
 
