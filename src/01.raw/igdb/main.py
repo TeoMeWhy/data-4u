@@ -142,6 +142,9 @@ PROFILE_AWS = args.profile_aws
 
 dotenv.load_dotenv(dotenv.find_dotenv('.env'))
 
+print("\n############################################")
+print("Executando para endpoint:", args.endpoint)
+
 if args.mode == 'collect':
     collect(args.endpoint, delay=args.delay)
 
