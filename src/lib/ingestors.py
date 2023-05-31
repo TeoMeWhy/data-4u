@@ -30,6 +30,7 @@ class IngestaoBronze:
         self.spark = spark
 
         self.table_fullname = f"{self.database_name}.{self.table_name}"
+        self.checkpoint_path = f'{self.path_incremental.rstrip("/")}_checkpoint'
         
         self.schema = None
         self.set_schema()
@@ -120,6 +121,7 @@ class IngestaoBronze:
             .readStream
             .format("cloudFiles")
             .option("cloudFiles.format", self.file_format)
+            .options(**self.read_options)
             .schema(self.schema)
             .load(self.path_incremental)
         )
@@ -128,11 +130,10 @@ class IngestaoBronze:
     def save_stream(self, df_stream):
         table_delta = delta.DeltaTable.forName(self.spark, self.table_fullname)
 
-        checkpoint_name = f'{self.path_incremental.rstrip("/")}_checkpoint'
 
         return (
             df_stream.writeStream.trigger(availableNow=True)
-            .option("checkpointLocation", checkpoint_name)
+            .option("checkpointLocation", self.checkpoint_path)
             .foreachBatch(lambda df, batchID: self.upsert(df, table_delta))
         )
 
