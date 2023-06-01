@@ -8,6 +8,9 @@ jobs:
   sync_jobs:
     runs-on: ubuntu-latest
     steps:
-      working-directory: src/04.workflows
-      - run: pip install -r requeriments.py
-      - run: python sync_jobs.py
+      - name: Instalando Requeriments
+        working-directory: src/04.workflows
+        run: pip install -r requeriments.py
+      - name: Sync dos Jobs
+        working-directory: src/04.workflows
+        run: python sync_jobs.py
