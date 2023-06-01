@@ -14,7 +14,7 @@ jobs:
           python-version: '3.11'
       - name: Instalando Requeriments
         working-directory: src/04.workflows
-        run: pip install -r requeriments.py
+        run: pip install -r requeriments.txt
       - name: Sync dos Jobs
         working-directory: src/04.workflows
         run: python sync_jobs.py
