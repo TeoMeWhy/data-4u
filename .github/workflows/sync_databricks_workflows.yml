@@ -8,6 +8,8 @@ jobs:
   sync_jobs:
     runs-on: ubuntu-latest
     steps:
+      with:
+        python-version: '3.11'
       - name: Instalando Requeriments
         working-directory: src/04.workflows
         run: pip install -r requeriments.py
