@@ -2,14 +2,14 @@ name: sync_databricks_workflows
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
-      branches:
-        - main
+    branches:
+      - main
 jobs:
   sync_jobs:
     runs-on: ubuntu-latest
     steps:
-        with:
-          python: '3.11'
+      with:
+        python: '3.11'
       working-directory: src/04.workflows/
       - run: pip install -r requirements.txt
       - run: python sync_jobs.py
