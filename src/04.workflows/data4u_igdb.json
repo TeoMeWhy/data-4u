@@ -13,7 +13,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "characters",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -33,7 +33,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "collections",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -53,7 +53,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "companies",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -73,7 +73,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "franchises",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -93,7 +93,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "games",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -113,7 +113,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "game_modes",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -133,7 +133,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "game_versions",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -153,7 +153,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "genres",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -173,7 +173,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "languages",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -193,7 +193,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "language_supports",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -213,7 +213,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "platforms",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -233,7 +233,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "regions",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -253,7 +253,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "themes",
-                    "id_fields": "checksum",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
@@ -266,6 +266,96 @@
                 "no_alert_for_canceled_runs": false,
                 "alert_on_last_attempt": false
             }
+        },
+        {
+            "task_key": "silver_games",
+            "depends_on": [
+                {
+                    "task_key": "bronze_games"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "games"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "silver_franchises",
+            "depends_on": [
+                {
+                    "task_key": "bronze_franchises"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "franchises"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "silver_games_expansions",
+            "depends_on": [
+                {
+                    "task_key": "bronze_games"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "games_expansions"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "silver_games_dlcs",
+            "depends_on": [
+                {
+                    "task_key": "bronze_games"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "games_dlcs"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "silver_games_franchise",
+            "depends_on": [
+                {
+                    "task_key": "bronze_games"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "games_franchise"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
         }
     ],
     "git_source": {
