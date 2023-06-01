@@ -5,7 +5,9 @@ on:
       - main
 
 jobs:
-  print_hello:
+  sync_jobs:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World!"
+      working-directory: src/04.workflows
+      - run: pip install -r requeriments.py
+      - run: python sync_jobs.py
