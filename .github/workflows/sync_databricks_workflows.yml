@@ -10,6 +10,6 @@ jobs:
     steps:
         with:
           python: '3.11'
-      - working-directory: src/04.workflows/
+      working-directory: src/04.workflows/
       - run: pip install -r requirements.txt
       - run: python sync_jobs.py
