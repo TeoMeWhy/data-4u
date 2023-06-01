@@ -4,3 +4,8 @@ def table_exists(spark, database, table):
                   .filter(f"tableName = '{table}'")
                   .count())
     return count == 1
+
+
+def import_query(path, **kwargs):
+    with open(path, 'r',**kwargs) as open_file:
+        return open_file.read()
