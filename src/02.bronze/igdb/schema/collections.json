@@ -1,0 +1,57 @@
+{
+  "type": "struct",
+  "fields": [
+    {
+      "name": "checksum",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "created_at",
+      "type": "long",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "games",
+      "type": {
+        "type": "array",
+        "elementType": "long",
+        "containsNull": true
+      },
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "id",
+      "type": "long",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "slug",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "updated_at",
+      "type": "long",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    }
+  ]
+}
