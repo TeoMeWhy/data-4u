@@ -304,6 +304,24 @@
             "email_notifications": {}
         },
         {
+            "task_key": "silver_platforms",
+            "depends_on": [
+                {
+                    "task_key": "bronze_platforms"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "platforms"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
             "task_key": "silver_games_expansions",
             "depends_on": [
                 {
