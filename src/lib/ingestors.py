@@ -46,6 +46,11 @@ class IngestaoBronze:
                 return types.StructType.fromJson(json.load(open_file))
         else:
             return None
+        
+    def save_schema(self):
+        data = self.schema.jsonValue()
+        with open(f'schema/{self.table_name}.json', 'w') as open_file:
+            json.dump(data, open_file, indent=2)
 
     def set_schema(self):
         schema = self.load_schema()
