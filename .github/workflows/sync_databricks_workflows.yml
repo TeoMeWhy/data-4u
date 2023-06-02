@@ -16,5 +16,8 @@ jobs:
         working-directory: src/04.workflows
         run: pip install -r requirements.txt
       - name: Sync dos Jobs
+        env:
+          DATABRICKS_WORKSPACE_URL: ${{ secrets.DATABRICKS_WORKSPACE_URL }}
+          DATABRICKS_WORKSPACE_TOKEN: ${{ secrets.DATABRICKS_WORKSPACE_TOKEN }}
         working-directory: src/04.workflows
         run: python sync_jobs.py
