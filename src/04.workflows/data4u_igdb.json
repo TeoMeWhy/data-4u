@@ -168,6 +168,26 @@
             }
         },
         {
+            "task_key": "bronze_involved_companies",
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/igdb/ingestao",
+                "base_parameters": {
+                    "table": "involved_companies",
+                    "id_fields": "id",
+                    "timestamp_field": "updated_at"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
             "task_key": "bronze_languages",
             "notebook_task": {
                 "notebook_path": "src/02.bronze/igdb/ingestao",
