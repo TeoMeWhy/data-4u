@@ -14,7 +14,7 @@ WITH tb_full AS (
   LEFT JOIN silver.igdb.genres as t4
   ON t3.idGenre = t4.idGenre
 
-  WHERE t2.dtRelease <= '{date}'
+  WHERE t2.dtRelease < '{date}'
 
   ORDER BY t1.idGame
 )
