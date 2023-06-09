@@ -22,6 +22,7 @@ WITH tb_all AS (
     ON t1.idGame = t2.idGame
 
     WHERE t2.dtRelease < '{date}'
+    AND t2.dtRelease >= add_months('{date}', -12)
 )
 
 SELECT idCompany,
