@@ -640,6 +640,70 @@
                 "no_alert_for_canceled_runs": false,
                 "alert_on_last_attempt": false
             }
+        },
+        {
+            "task_key": "fs_company_general_05_years",
+            "depends_on": [
+                {
+                    "task_key": "silver_games"
+                },
+                {
+                    "task_key": "silver_involved_companies"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/feature_store/fs_ingestao",
+                "base_parameters": {
+                    "description": "Estatísticas gerais das empresas do cenário de games nos últimos 5 anos",
+                    "id_fields": "idCompany,dtRef",
+                    "date_start": "{{start_date}}",
+                    "date_stop": "{{start_date}}",
+                    "partition_fields": "dtRef",
+                    "monthly": "False",
+                    "table": "company_general_05_years"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "fs_company_general_10_years",
+            "depends_on": [
+                {
+                    "task_key": "silver_games"
+                },
+                {
+                    "task_key": "silver_involved_companies"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/feature_store/fs_ingestao",
+                "base_parameters": {
+                    "description": "Estatísticas gerais das empresas do cenário de games nos últimos 10 anos",
+                    "id_fields": "idCompany,dtRef",
+                    "date_start": "{{start_date}}",
+                    "date_stop": "{{start_date}}",
+                    "partition_fields": "dtRef",
+                    "monthly": "False",
+                    "table": "company_general_10_years"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
         }
     ],
     "git_source": {
