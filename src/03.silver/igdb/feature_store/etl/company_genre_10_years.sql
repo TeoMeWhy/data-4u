@@ -15,7 +15,7 @@ WITH tb_full AS (
   ON t3.idGenre = t4.idGenre
 
   WHERE t2.dtRelease < '{date}'
-  AND t2.dtRelease >= '{date}' - INTERVAL 10 year
+  AND t2.dtRelease >= date('{date}') - INTERVAL 10 year
 
   ORDER BY t1.idGame
 )

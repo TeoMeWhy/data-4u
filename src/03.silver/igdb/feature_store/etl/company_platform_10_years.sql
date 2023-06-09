@@ -19,7 +19,7 @@ WITH tb_full AS (
   ON t4.idPlatform = t3.idPlatform
 
   WHERE t2.dtRelease < '{date}'
-  AND t2.dtRelease >= date({'date'}) - INTERVAL 10 year
+  AND t2.dtRelease >= date('{date}') - INTERVAL 10 year
   --  AND descCategory IN ('standalone_expansion','remaster','expansion','expanded_game','main_game','remake')
 
 )
