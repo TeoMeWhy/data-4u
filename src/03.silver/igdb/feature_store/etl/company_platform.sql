@@ -19,6 +19,7 @@ WITH tb_full AS (
   ON t4.idPlatform = t3.idPlatform
 
   WHERE t2.dtRelease < '{date}'
+  --  AND descCategory IN ('standalone_expansion','remaster','expansion','expanded_game','main_game','remake')
 
 )
 
@@ -33,7 +34,18 @@ SELECT
     count( DISTINCT CASE WHEN descCategory = 'console' THEN idGame END) AS qtdeConsole,
     count( DISTINCT CASE WHEN descCategory = 'computer' THEN idGame END) AS qtdeComputer,
     count( DISTINCT CASE WHEN descCategory = 'platform' THEN idGame END) AS qtdePlatform,
-    count( DISTINCT CASE WHEN descCategory = 'arcade' THEN idGame END) AS qtdeArcade
+    count( DISTINCT CASE WHEN descCategory = 'arcade' THEN idGame END) AS qtdeArcade,
+
+    count( DISTINCT CASE WHEN descCategory = 'operating_system' THEN idGame END) / count(DISTINCT idGame) AS pctOperatingSystem,
+    count( DISTINCT CASE WHEN descCategory = 'operating_system' AND descName IN ('Android', 'BlackBerry OS', 'Palm OS', 'Windows Mobile', 'Windows Phone', 'iOS') THEN idGame END) / count(DISTINCT idGame) AS pctMobile,
+    count( DISTINCT CASE WHEN descCategory = 'operating_system' AND descName NOT IN ('Android', 'BlackBerry OS', 'Palm OS', 'Windows Mobile', 'Windows Phone', 'iOS') THEN idGame END) / count(DISTINCT idGame) AS pctPC, 
+    count( DISTINCT CASE WHEN descCategory = 'portable_console' THEN idGame END) / count(DISTINCT idGame) AS pctPortableConsole,
+    count( DISTINCT CASE WHEN descCategory = 'missing_category' THEN idGame END) / count(DISTINCT idGame) AS pctMissingCategory,
+    count( DISTINCT CASE WHEN descCategory = 'console' THEN idGame END) / count(DISTINCT idGame) AS pctConsole,
+    count( DISTINCT CASE WHEN descCategory = 'computer' THEN idGame END) / count(DISTINCT idGame) AS pctComputer,
+    count( DISTINCT CASE WHEN descCategory = 'platform' THEN idGame END) / count(DISTINCT idGame) AS pctPlatform,
+    count( DISTINCT CASE WHEN descCategory = 'arcade' THEN idGame END) / count(DISTINCT idGame) AS pctArcade
+
 
 FROM tb_full
 
