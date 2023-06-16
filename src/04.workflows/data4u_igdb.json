@@ -308,6 +308,42 @@
             }
         },
         {
+            "task_key": "silver_characters",
+            "depends_on": [
+                {
+                    "task_key": "bronze_characters"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "characters"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "silver_games_characters",
+            "depends_on": [
+                {
+                    "task_key": "bronze_characters"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/igdb/ingestao",
+                "base_parameters": {
+                    "table": "games_characters"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
             "task_key": "silver_collections",
             "depends_on": [
                 {
