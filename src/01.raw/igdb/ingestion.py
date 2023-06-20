@@ -68,8 +68,14 @@ class Ingestor:
         
             print("Obtendo dados...")
             data = self.get_and_save(sufix, default)
-            updated_timestamp = int(data[-1]['updated_at'])
-            print(updated_timestamp, "... Ok.")
+            try:
+                updated_timestamp = int(data[-1]['updated_at'])
+                print(updated_timestamp, "... Ok.")
+
+            except KeyError as err:
+                print(err)
+                print(data[-1].keys())
+                updated_timestamp = int(datetime.datetime.now().timestamp()) - 100000
 
             if len(data) < 500 or updated_timestamp < self.delay_timestamp:
                 print("Finalizando loop...")
@@ -99,8 +105,11 @@ def collect(endpoint, delay, path, **params):
 # COMMAND ----------
 
 # DBTITLE 1,Setup
-endpoint = dbutils.widgets.get('endpoint')
-delay = int(dbutils.widgets.get('delay'))
+# endpoint = dbutils.widgets.get('endpoint')
+# delay = int(dbutils.widgets.get('delay'))
+
+endpoint = "platform_families"
+delay = 10
 
 path = '/dbfs/mnt/datalake/igdb'
 
