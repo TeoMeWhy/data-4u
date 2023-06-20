@@ -623,7 +623,7 @@
                 "notebook_path": "src/02.bronze/igdb/ingestao",
                 "base_parameters": {
                     "table": "platforms",
-                    "id_fields": "idplatforms",
+                    "id_fields": "id",
                     "timestamp_field": "updated_at"
                 },
                 "source": "GIT"
