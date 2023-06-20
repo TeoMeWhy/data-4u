@@ -105,11 +105,8 @@ def collect(endpoint, delay, path, **params):
 # COMMAND ----------
 
 # DBTITLE 1,Setup
-# endpoint = dbutils.widgets.get('endpoint')
-# delay = int(dbutils.widgets.get('delay'))
-
-endpoint = "platform_families"
-delay = 10
+endpoint = dbutils.widgets.get('endpoint')
+delay = int(dbutils.widgets.get('delay'))
 
 path = '/dbfs/mnt/datalake/igdb'
 
