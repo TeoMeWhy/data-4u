@@ -91,3 +91,25 @@ best_features = (feature_importance.sort_values(ascending=False)
                                    .cumsum()
                                    .head(50)
                                    .index.tolist())
+
+# COMMAND ----------
+
+
+
+imputer_0 = imputation.ArbitraryNumberImputer(arbitrary_number=0, variables=features)
+
+tree_model = ensemble.RandomForestClassifier(min_samples_leaf=250, max_depth=8)
+
+model_pipeline = pipeline.Pipeline( [('Imputer', imputer_0),
+                                     ("Tree Model", tree_model)])
+
+
+with mlflow.start_run():
+    mlflow.sklearn.autolog()
+
+    model_pipeline.fit(X_train, y_train)
+
+    y_prob_test = model_pipeline.predict_proba(X_test)
+    auc_test = metrics.roc_auc_score(y_test, y_prob_test[:,1])
+    mlflow.log_metrics({"auc_test":auc_test})
+

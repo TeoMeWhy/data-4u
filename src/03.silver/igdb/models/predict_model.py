@@ -42,6 +42,10 @@ predict_pdf = predict_df.toPandas()
 
 # COMMAND ----------
 
+
+
+# COMMAND ----------
+
 # DBTITLE 1,Predictions
 predict_probas = model.predict_proba(predict_pdf[features])
 predict_pdf['proba_sucess_game'] = predict_probas[:,1]
