@@ -4,6 +4,7 @@
 # COMMAND ----------
 
 import urllib.request
+from multiprocessing import Pool
 
 from tqdm import tqdm
 
@@ -27,8 +28,11 @@ ufs = ["RO", "AC", "AM", "RR","PA",
        "PR", "SC", "RS", "MS", "MT",
        "GO","DF"]
 
-datas = ['2023-01-01']
+datas = ['2023-01-01', '2023-02-01']
 
-for uf in ufs:
-    print(uf)
-    get_data_uf(uf, datas)
+to_download = [(uf, datas) for uf in ufs]
+
+# COMMAND ----------
+
+with Pool(8) as pool:
+    pool.starmap(get_data_uf, to_download)
