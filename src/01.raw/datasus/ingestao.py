@@ -5,8 +5,12 @@
 
 import urllib.request
 from multiprocessing import Pool
-
 from tqdm import tqdm
+
+import sys
+sys.path.insert(0,"../../lib/")
+
+import dttools
 
 def get_data_uf_ano_mes(uf, ano, mes):
     url = f"ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/RD{uf}{ano}{mes}.dbc"
@@ -28,11 +32,14 @@ ufs = ["RO", "AC", "AM", "RR","PA",
        "PR", "SC", "RS", "MS", "MT",
        "GO","DF"]
 
-datas = ['2023-01-01', '2023-02-01']
-
-to_download = [(uf, datas) for uf in ufs]
 
 # COMMAND ----------
+
+dt_start = dbutils.widgets.get("dt_start")
+dt_stop = dbutils.widgets.get("dt_stop")
+
+datas = dttools.date_range(dt_start, dt_stop, monthly=True)
+to_download = [(uf, datas) for uf in ufs]
 
 with Pool(8) as pool:
     pool.starmap(get_data_uf, to_download)
