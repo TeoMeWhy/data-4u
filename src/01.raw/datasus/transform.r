@@ -5,7 +5,7 @@ install.packages("read.dbc")
 
 library(read.dbc)
 
-dbc_folder <- "/dbfs/mnt/datalake/datasus/rd/dbc"
+dbc_folder <- "/dbfs/mnt/datalake/datasus/rd/dbc/landing"
 csv_folder <- "/dbfs/mnt/datalake/datasus/rd/csv"
 
 files <- list.files(dbc_folder, full.names=TRUE)
@@ -15,4 +15,5 @@ for(f in files) {
     lista = strsplit(f, "/")[[1]]
     file = gsub(".dbc", ".csv", lista[length(lista)])
     write.csv2(df, paste(csv_folder, file, sep="/"), row.names=FALSE)
+    file.rename(from=f, to=gsub("landing", "proceeded", f))
 }
