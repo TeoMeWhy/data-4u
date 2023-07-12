@@ -15,7 +15,7 @@ import dttools
 def get_data_uf_ano_mes(uf, ano, mes):
     url = f"ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/RD{uf}{ano}{mes}.dbc"
 
-    file_path = f"/dbfs/mnt/datalake/datasus/rd/dbc/RD{uf}{ano}{mes}.dbc" 
+    file_path = f"/dbfs/mnt/datalake/datasus/rd/dbc/landing/RD{uf}{ano}{mes}.dbc" 
 
     resp = urllib.request.urlretrieve(url, file_path)
 
@@ -24,6 +24,7 @@ def get_data_uf(uf, datas):
         ano, mes, dia = i.split("-")
         ano = ano[-2:]
         get_data_uf_ano_mes(uf, ano, mes)
+
 
 ufs = ["RO", "AC", "AM", "RR","PA",
        "AP", "TO", "MA", "PI", "CE",
@@ -41,5 +42,5 @@ dt_stop = dbutils.widgets.get("dt_stop")
 datas = dttools.date_range(dt_start, dt_stop, monthly=True)
 to_download = [(uf, datas) for uf in ufs]
 
-with Pool(8) as pool:
+with Pool(10) as pool:
     pool.starmap(get_data_uf, to_download)
