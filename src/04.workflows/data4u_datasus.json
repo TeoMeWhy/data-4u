@@ -1,0 +1,79 @@
+{
+    "settings": {
+        "name": "data4u_datasus",
+        "email_notifications": {
+            "no_alert_for_skipped_runs": false
+        },
+        "webhook_notifications": {},
+        "timeout_seconds": 0,
+        "max_concurrent_runs": 1,
+        "tasks": [
+            {
+                "task_key": "raw_ingestion",
+                "notebook_task": {
+                    "notebook_path": "src/01.raw/datasus/ingestao",
+                    "base_parameters": {
+                        "dt_start": "{{start_date}}",
+                        "dt_stop": "{{start_date}}",
+                        "delay": "13"
+                    },
+                    "source": "GIT"
+                },
+                "existing_cluster_id": "0523-124114-7ef5b8u0",
+                "timeout_seconds": 0,
+                "email_notifications": {},
+                "notification_settings": {
+                    "no_alert_for_skipped_runs": false,
+                    "no_alert_for_canceled_runs": false,
+                    "alert_on_last_attempt": false
+                }
+            },
+            {
+                "task_key": "raw_transform",
+                "depends_on": [
+                    {
+                        "task_key": "raw_ingestion"
+                    }
+                ],
+                "notebook_task": {
+                    "notebook_path": "src/01.raw/datasus/transform",
+                    "source": "GIT"
+                },
+                "existing_cluster_id": "0523-124114-7ef5b8u0",
+                "timeout_seconds": 0,
+                "email_notifications": {},
+                "notification_settings": {
+                    "no_alert_for_skipped_runs": false,
+                    "no_alert_for_canceled_runs": false,
+                    "alert_on_last_attempt": false
+                }
+            },
+            {
+                "task_key": "bronze_ingestion",
+                "depends_on": [
+                    {
+                        "task_key": "raw_transform"
+                    }
+                ],
+                "notebook_task": {
+                    "notebook_path": "src/02.bronze/datasus/ingestao",
+                    "source": "GIT"
+                },
+                "existing_cluster_id": "0523-124114-7ef5b8u0",
+                "timeout_seconds": 0,
+                "email_notifications": {},
+                "notification_settings": {
+                    "no_alert_for_skipped_runs": false,
+                    "no_alert_for_canceled_runs": false,
+                    "alert_on_last_attempt": false
+                }
+            }
+        ],
+        "git_source": {
+            "git_url": "https://github.com/TeoMeWhy/data-4u",
+            "git_provider": "gitHub",
+            "git_branch": "feat/raw_datasus"
+        },
+        "format": "MULTI_TASK"
+    }
+}
