@@ -7,6 +7,9 @@ import urllib.request
 from multiprocessing import Pool
 from tqdm import tqdm
 
+import datetime
+from dateutil.relativedelta import relativedelta
+
 import sys
 sys.path.insert(0,"../../lib/")
 
@@ -38,6 +41,9 @@ ufs = ["RO", "AC", "AM", "RR","PA",
 
 dt_start = dbutils.widgets.get("dt_start")
 dt_stop = dbutils.widgets.get("dt_stop")
+delay = dbutils.widgets.get("delay")
+
+dt_start = (datetime.strptime(dt_start, "%Y-%d-01") - relativedelta(months=delay)).strftime("%Y-%d-01")
 
 datas = dttools.date_range(dt_start, dt_stop, monthly=True)
 to_download = [(uf, datas) for uf in ufs]
