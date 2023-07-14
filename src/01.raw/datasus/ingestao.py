@@ -19,8 +19,10 @@ def get_data_uf_ano_mes(uf, ano, mes):
     url = f"ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/RD{uf}{ano}{mes}.dbc"
 
     file_path = f"/dbfs/mnt/datalake/datasus/rd/dbc/landing/RD{uf}{ano}{mes}.dbc" 
-
-    resp = urllib.request.urlretrieve(url, file_path)
+    try:
+        resp = urllib.request.urlretrieve(url, file_path)
+    except:
+        print("Não foi possível coletar o arquivo.")
 
 def get_data_uf(uf, datas):
     for i in tqdm(datas):
