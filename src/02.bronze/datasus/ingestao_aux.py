@@ -1,5 +1,7 @@
 # Databricks notebook source
+# DBTITLE 1,Ingestão
 def ingest_table(path):
+    
     table_name = path.split("/")[-1].replace(".csv", "").lower()
     table_name
 

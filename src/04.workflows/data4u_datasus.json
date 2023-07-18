@@ -66,12 +66,32 @@
                 "no_alert_for_canceled_runs": false,
                 "alert_on_last_attempt": false
             }
+        },
+        {
+            "task_key": "silver_rd_sih",
+            "depends_on": [
+                {
+                    "task_key": "bronze_ingestion"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/datasus/rd_sih",
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
         }
     ],
     "git_source": {
         "git_url": "https://github.com/TeoMeWhy/data-4u",
         "git_provider": "gitHub",
-        "git_branch": "feat/raw_datasus"
+        "git_branch": "main"
     },
     "format": "MULTI_TASK"
 }
