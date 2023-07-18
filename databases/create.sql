@@ -19,3 +19,4 @@ CREATE DATABASE IF NOT EXISTS silver.pizza_query;
 
 -- DBTITLE 1,DataSUS
 CREATE DATABASE IF NOT EXISTS bronze.datasus;
+CREATE DATABASE IF NOT EXISTS silver.datasus;
