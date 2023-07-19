@@ -6,6 +6,7 @@ sys.path.insert(0, '../../lib')
 
 from ingestors import IngestaoBronze
 import dbtools
+import delta
 
 # COMMAND ----------
 
@@ -18,7 +19,7 @@ table_name=table
 database_name='bronze.datasus'
 id_fields= ["N_AIH", "DT_SAIDA", "IDENT"]
 timestamp_field='DT_SAIDA'
-partition_fields=["ANO_CMPT","MES_CMPT"]
+partition_fields=[]
 read_options = {'sep': ';','header': "true"}
 
 ingestao = IngestaoBronze(
@@ -45,4 +46,13 @@ if not dbtools.table_exists(spark, database_name, table):
 # COMMAND ----------
 
 # DBTITLE 1,Ingestão por streaming
-ingestao.process_stream()
+stream = ingestao.process_stream()
+
+# COMMAND ----------
+
+stream.awaitTermination()
+
+# COMMAND ----------
+
+table = delta.DeltaTable.forName(spark, f"{database_name}.{table_name}")
+table.vacuum()
