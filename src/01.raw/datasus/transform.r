@@ -14,7 +14,6 @@ dbc_folder <- "/dbfs/mnt/datalake/datasus/rd/dbc/landing"
 csv_folder <- "/dbfs/mnt/datalake/datasus/rd/csv"
 
 files <- list.files(dbc_folder, full.names=TRUE)
-print(files)
 
 # COMMAND ----------
 
