@@ -29,7 +29,7 @@ class IngestorAPI():
         df = pd.DataFrame(data)
         less_than_match_id = df['match_id'].min()
         min_start_time = datetime.datetime.fromtimestamp(df['start_time'].min())
-        while min_start_time > self.to_stop:
+        while min_start_time > self.to_stop and len(data)==100:
             df = pd.DataFrame(self.get_and_save(less_than_match_id=less_than_match_id))
             less_than_match_id = df['match_id'].min()
             min_start_time = datetime.datetime.fromtimestamp(df['start_time'].min())
@@ -48,3 +48,7 @@ dt_stop = dt_stop.strftime("%Y-%m-%d")
 
 ing = IngestorAPI(url, dt_stop)
 ing.auto_process()
+
+# COMMAND ----------
+
+
