@@ -48,7 +48,3 @@ dt_stop = dt_stop.strftime("%Y-%m-%d")
 
 ing = IngestorAPI(url, dt_stop)
 ing.auto_process()
-
-# COMMAND ----------
-
-

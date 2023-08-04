@@ -1,0 +1,569 @@
+{
+    "fields": [
+        {
+            "metadata": {},
+            "name": "players",
+            "nullable": true,
+            "type": {
+                "containsNull": true,
+                "elementType": {
+                    "fields": [
+                        {
+                            "metadata": {},
+                            "name": "match_id",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "player_slot",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "account_id",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "assists",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "backpack_0",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "backpack_1",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "backpack_2",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "backpack_3",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "camps_stacked",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "creeps_stacked",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "deaths",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "denies",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "firstblood_claimed",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "gold",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "gold_per_min",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "gold_spent",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "hero_damage",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "hero_healing",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "hero_id",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "item_0",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "item_1",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "item_2",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "item_3",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "item_4",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "item_5",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "item_neutral",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "kill_streaks",
+                            "nullable": true,
+                            "type": {
+                                "fields": [
+                                    {
+                                        "metadata": {},
+                                        "name": "1",
+                                        "nullable": true,
+                                        "type": "long"
+                                    },
+                                    {
+                                        "metadata": {},
+                                        "name": "2",
+                                        "nullable": true,
+                                        "type": "long"
+                                    },
+                                    {
+                                        "metadata": {},
+                                        "name": "3",
+                                        "nullable": true,
+                                        "type": "long"
+                                    },
+                                    {
+                                        "metadata": {},
+                                        "name": "4",
+                                        "nullable": true,
+                                        "type": "long"
+                                    },
+                                    {
+                                        "metadata": {},
+                                        "name": "5",
+                                        "nullable": true,
+                                        "type": "long"
+                                    }
+                                ],
+                                "type": "struct"
+                            }
+                        },
+                        {
+                            "metadata": {},
+                            "name": "kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "last_hits",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "leaver_status",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "level",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "net_worth",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "obs_placed",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "party_id",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "party_size",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "pings",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "pred_vict",
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "randomed",
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "roshans_killed",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "rune_pickups",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "stuns",
+                            "nullable": true,
+                            "type": "string"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "teamfight_participation",
+                            "nullable": true,
+                            "type": "string"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "tower_damage",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "towers_killed",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "xp_per_min",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "personaname",
+                            "nullable": true,
+                            "type": "string"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "name",
+                            "nullable": true,
+                            "type": "string"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "radiant_win",
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "start_time",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "duration",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "cluster",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "lobby_type",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "game_mode",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "is_contributor",
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "patch",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "region",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "isRadiant",
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "win",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "lose",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "total_gold",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "total_xp",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "kills_per_min",
+                            "nullable": true,
+                            "type": "double"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "kda",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "abandons",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "neutral_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "tower_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "courier_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "lane_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "hero_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "observer_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "sentry_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "roshan_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "necronomicon_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "ancient_kills",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "buyback_count",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "observer_uses",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "sentry_uses",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "lane_efficiency",
+                            "nullable": true,
+                            "type": "double"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "lane_efficiency_pct",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "lane",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "lane_role",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "is_roaming",
+                            "nullable": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "purchase_tpscroll",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "actions_per_min",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "life_state_dead",
+                            "nullable": true,
+                            "type": "long"
+                        },
+                        {
+                            "metadata": {},
+                            "name": "rank_tier",
+                            "nullable": true,
+                            "type": "long"
+                        }
+                    ],
+                    "type": "struct"
+                },
+                "type": "array"
+            }
+        }
+    ],
+    "type": "struct"
+}

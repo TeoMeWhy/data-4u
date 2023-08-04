@@ -20,3 +20,9 @@ CREATE DATABASE IF NOT EXISTS silver.pizza_query;
 -- DBTITLE 1,DataSUS
 CREATE DATABASE IF NOT EXISTS bronze.datasus;
 CREATE DATABASE IF NOT EXISTS silver.datasus;
+
+-- COMMAND ----------
+
+-- DBTITLE 1,Dota
+CREATE DATABASE IF NOT EXISTS bronze.dota;
+CREATE DATABASE IF NOT EXISTS silver.dota;
