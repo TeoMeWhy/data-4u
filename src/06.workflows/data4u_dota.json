@@ -55,7 +55,7 @@
                 "notebook_path": "src/02.bronze/dota/ingestao",
                 "base_parameters": {
                     "table_name": "matches",
-                    "id_fields": ["match_id"]
+                    "id_fields": "match_id"
                 },
                 "source": "GIT"
             },
@@ -74,7 +74,7 @@
                 "notebook_path": "src/02.bronze/dota/ingestao",
                 "base_parameters": {
                     "table_name": "matches_players",
-                    "id_fields": ["match_id", "account_id"]
+                    "id_fields": "match_id,account_id"
                 },
                 "source": "GIT"
             },
