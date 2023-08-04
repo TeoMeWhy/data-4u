@@ -43,6 +43,44 @@
             "existing_cluster_id": "0523-124114-7ef5b8u0",
             "timeout_seconds": 0,
             "email_notifications": {}
+        },
+        {
+            "task_key": "bronze_matches",
+            "depends_on": [
+                {
+                    "task_key": "get_matches_details"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/dota/ingestao",
+                "base_parameters": {
+                    "table_name": "matches",
+                    "id_fields": ["match_id"]
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "bronze_matches_players",
+            "depends_on": [
+                {
+                    "task_key": "get_matches_details"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/dota/ingestao",
+                "base_parameters": {
+                    "table_name": "matches_players",
+                    "id_fields": ["match_id", "account_id"]
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "timeout_seconds": 0,
+            "email_notifications": {}
         }
     ],
     "git_source": {
