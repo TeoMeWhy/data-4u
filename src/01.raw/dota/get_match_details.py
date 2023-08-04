@@ -71,8 +71,8 @@ class IngestorMatchDetails:
 
     def auto_execute(self):
         ids = self.get_match_list()
-        with Pool(self.pool_size) as p:
-            p.map(self.get_and_save, ids)
+        for i in tqdm(ids):
+            self.get_and_save(i)
 
         self.post_ingestion()
 
