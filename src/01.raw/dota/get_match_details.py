@@ -38,7 +38,7 @@ class IngestorMatchDetails:
     
     def get_match_list(self):
         df_pro_matches = spark.read.format("parquet").load("/mnt/datalake/dota/pro_matches/")
-        df_collect = spark.read.format("parquet").load("/mnt/datalake/dota/collect/")
+        df_collect = spark.read.format("delta").load("/mnt/datalake/dota/collect/")
 
         ids = (df_pro_matches.join(df_collect,
                                    df_pro_matches.match_id==df_collect.match_id,
