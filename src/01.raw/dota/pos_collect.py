@@ -18,10 +18,9 @@ df = spark.createDataFrame(pd.DataFrame({"match_id":files}))
 
 # DBTITLE 1,Consolida Pro Matches
 df_macthes = (spark.read
-                .format("parquet")
-                .load("/mnt/datalake/dota/pro_matches")
-                .collect()
-           )
+                   .format("parquet")
+                   .load("/mnt/datalake/dota/pro_matches")
+                   .collect())
 
 df_matches_save = spark.createDataFrame(df_macthes)
 
@@ -29,3 +28,11 @@ df_matches_save = spark.createDataFrame(df_macthes)
                 .format("parquet")
                 .mode("overwrite")
                 .save("/mnt/datalake/dota/pro_matches"))
+
+# COMMAND ----------
+
+df_pro_matches = spark.read.parquet("/mnt/datalake/dota/pro_matches")
+df_pro_matches.select(F.count_distinct("match_id"), F.count("match_id")).display()
+
+df_collect = spark.read.format("delta").load("/mnt/datalake/dota/collect")
+df_collect.select(F.count_distinct("match_id")).display()
