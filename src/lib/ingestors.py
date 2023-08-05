@@ -30,7 +30,7 @@ class IngestaoBronze:
         self.spark = spark
 
         self.table_fullname = f"{self.database_name}.{self.table_name}"
-        self.checkpoint_path = f'{self.path_incremental.rstrip("/")}_checkpoint'
+        self.checkpoint_path = f'{self.path_incremental.rstrip("/")}_{self.table_name}_checkpoint'
         
         self.schema = None
         self.set_schema()
