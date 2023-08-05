@@ -54,28 +54,14 @@ class IngestorMatchDetails:
         data = resp.json()
         self.save_data(data)
 
-    def post_ingestion():
-        df = (spark.read
-                   .format("json")
-                   .schema(self.schema) 
-                   .load("/mnt/datalake/dota/matches_details/"))
-
-        (df.coalesce(1)
-           .write
-           .format("delta")
-           .mode("overwrite")
-           .save("/mnt/datalake/dota/collect/"))
-
     def auto_execute(self):
         print("Obtendo lista de partidas a serem coletadas...")
         ids = self.get_match_list()
         
-        print("Iniciando coleta de dados de forma paralela...")
+        print(f"Iniciando coleta de dados de forma paralela. {len(ids)} partidas...")
 
         with Pool(self.pool_size) as p:
             p.map(self.get_and_save, ids)
-
-        self.post_ingestion()
 
 # COMMAND ----------
 
