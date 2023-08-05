@@ -10,6 +10,7 @@ from multiprocessing import Pool
 from tqdm import tqdm
 
 from pyspark.sql import functions as F
+from pyspark.sql import types
 
 
 class IngestorMatchDetails:
@@ -30,12 +31,10 @@ class IngestorMatchDetails:
             with open(path, "w") as open_file:
                 json.dump(data, open_file)
 
-            df = spark.createDataFrame([{"match_id": data['match_id']}])
-            df.write.format("parquet").mode("append").save("/mnt/datalake/dota/collect/")
-        
         except KeyError as err:
             print("Id da partida não encontrada")
             print("A API pode ter estourado o rate limit")
+            print(data)
     
     def get_match_list(self):
         df_pro_matches = spark.read.format("parquet").load("/mnt/datalake/dota/pro_matches/")
@@ -57,22 +56,24 @@ class IngestorMatchDetails:
 
     def post_ingestion():
         df = (spark.read
-                   .format("parquet")
-                   .load("/mnt/datalake/dota/collect/")
-                   .collect())
+                   .format("json")
+                   .schema(self.schema) 
+                   .load("/mnt/datalake/dota/matches_details/"))
 
-        df_new = spark.createDataFrame(df_rdd)
-
-        (df_new.coalesce(1)
-               .write
-               .format("parquet")
-               .mode("overwrite")
-               .save("/mnt/datalake/dota/collect/"))
+        (df.coalesce(1)
+           .write
+           .format("delta")
+           .mode("overwrite")
+           .save("/mnt/datalake/dota/collect/"))
 
     def auto_execute(self):
+        print("Obtendo lista de partidas a serem coletadas...")
         ids = self.get_match_list()
-        for i in tqdm(ids):
-            self.get_and_save(i)
+        
+        print("Iniciando coleta de dados de forma paralela...")
+
+        with Pool(self.pool_size) as p:
+            p.map(self.get_and_save, ids)
 
         self.post_ingestion()
 
@@ -80,8 +81,10 @@ class IngestorMatchDetails:
 
 try:
     api_key = dbutils.secrets.get("dota", "opendota_api")
+    print("API KEY importada com sucesso!")
 except:
     api_key = None
+    print("API KEY não foi importada!")
 
 pool_size = int(dbutils.widgets.get("pool_size"))
 
