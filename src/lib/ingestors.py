@@ -126,6 +126,7 @@ class IngestaoBronze:
             .readStream
             .format("cloudFiles")
             .option("cloudFiles.format", self.file_format)
+            .option("cloudFiles.maxFilesPerTrigger", 10000)
             .options(**self.read_options)
             .schema(self.schema)
             .load(self.path_incremental)
