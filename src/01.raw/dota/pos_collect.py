@@ -1,18 +1,13 @@
 # Databricks notebook source
 from pyspark.sql import types
+import pandas as pd
 
 # COMMAND ----------
 
 # DBTITLE 1,Consolida collect
-schema = types.StructType(fields=[
-            types.StructField(name="match_id",
-                              dataType=types.StringType())
-])
+files = [i.name.split(".")[0] for i in dbutils.fs.ls("/mnt/datalake/dota/matches_details")]
 
-df = (spark.read
-           .format("json")
-           .schema(schema) 
-           .load("/mnt/datalake/dota/matches_details"))
+df = spark.createDataFrame(pd.DataFrame({"match_id":files}))
 
 (df.write
    .format("delta")
