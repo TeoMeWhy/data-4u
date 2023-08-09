@@ -3,8 +3,22 @@ DROP TABLE IF EXISTS silver.datasus.rd_sih;
 
 CREATE TABLE IF NOT EXISTS silver.datasus.rd_sih AS
 
+WITH tb_uf AS (
+  select distinct codUF, descUF
+  from silver.ibge.municipios_brasileiros
+),
+
+tb_cid AS (
+  select *
+  from silver.datasus.cid
+  where codCID not like '%-%'
+  and codCID10 not like '%.%'
+  qualify row_number() over (partition by codCID10dst order by codCID desc) = 1
+)
+
 SELECT 
-    t1.UF_ZI,
+    -- t1.UF_ZI,
+    t32.descUF,
     t1.ANO_CMPT,
     t1.MES_CMPT,
     t4.descEspecialidade,
@@ -44,7 +58,9 @@ SELECT
     TO_DATE(t1.DT_INTER, 'yyyymmdd') AS DtInternacao,
     TO_DATE(t1.DT_SAIDA, 'yyyymmdd') AS DtSaida,
     t1.DIAG_PRINC,
+    t33.descCID AS descDiagnosticoCIDPrinc,
     t1.DIAG_SECUN,
+    t34.descCID AS descDiagnosticoCIDSec,
     t17.`descTipoCobrança` AS descTipoCobranca,
     t10.descNaturezaHospitalSUS,
     t11.descNaturezaJuridica,
@@ -160,7 +176,8 @@ ON t1.RUBRICA = t14.codRubrica
 LEFT JOIN bronze.datasus.seqaih_5 AS t15
 ON t1.SEQ_AIH5 = t15.codSeqAIH
 
-LEFT JOIN bronze.datasus.subtipo_financ AS t16
+LEFT JOIN bronze.datasusOutras complicações da gravidez e do parto
+.subtipo_financ AS t16
 ON t1.FAEC_TP = t16.codSubTipoFinanciamento
 
 LEFT JOIN bronze.datasus.tipo_cobranca AS t17
@@ -208,4 +225,12 @@ ON t1.DIAGSEC8 = t30.codTpDiagSecundario
 LEFT JOIN bronze.datasus.tp_diagsecundario as t31
 ON t1.DIAGSEC9 = t31.codTpDiagSecundario
 
+LEFT JOIN tb_uf AS t32
+ON substring(t1.UF_ZI,0,2) = t32.codUF
+
+LEFT JOIN tb_cid AS t33
+ON substring(t1.DIAG_PRINC,0,3) = t33.codCID10dst
+
+LEFT JOIN tb_cid AS t34
+ON substring(t1.DIAG_SECUN,0,3) = t34.codCID10dst
 ;
