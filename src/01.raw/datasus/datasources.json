@@ -1,0 +1,12 @@
+{
+  "sihsus": {
+    "origin": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/RD{uf}{ano}{mes}.dbc",
+    "target": "/dbfs/mnt/datalake/datasus/rd/dbc/landing/RD{uf}{ano}{mes}.dbc",
+    "period": "monthly"
+  },
+  "sinasc": {
+    "origin": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/1996_/Dados/DNRES/DN{uf}{ano}.dbc",
+    "target": "/dbfs/mnt/datalake/datasus/sinasc/dbc/landing/DN{uf}{ano}.dbc",
+    "period": "yearly"
+  }
+}
