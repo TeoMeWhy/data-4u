@@ -1,17 +1,25 @@
 # Databricks notebook source
 install.packages("read.dbc")
 install.packages("doParallel")
+install.packages("jsonlite")
 
 # COMMAND ----------
 
 library(read.dbc)
 library(foreach)
 library(doParallel)
+library(jsonlite)
 
 date = format(Sys.time(), "%Y%m%d")
 
-dbc_folder <- "/dbfs/mnt/datalake/datasus/rd/dbc/landing"
-csv_folder <- "/dbfs/mnt/datalake/datasus/rd/csv"
+datasource <- dbutils.widgets.get("datasource")
+datasources <- fromJSON("datasources.json")
+
+path = datasources[datasource][[1]]['target'][[1]]
+partes <- unlist(strsplit(path, "/"))
+partes <- partes[-length(partes)]
+dbc_folder <- paste(partes, collapse = "/")
+csv_folder <- sub('/dbc/landing', '/csv', dbc_folder)
 
 files <- list.files(dbc_folder, full.names=TRUE)
 
@@ -31,12 +39,12 @@ etl <- function(f) {
 
 registerDoParallel(8)
 while (sum(is.na(files)) != length(files)) {
-    batch = files[1:min(8, length(files))]
-    files = files[1+min(8, length(files)):length(files)]
-    foreach (i=batch) %dopar% {
-      print(i)
-      if (is.na(i) == FALSE) {
-        etl(i)
-      }
+  batch = files[1:min(8, length(files))]
+  files = files[1+min(8, length(files)):length(files)]
+  foreach (i=batch) %dopar% {
+    print(i)
+    if (is.na(i) == FALSE) {
+      etl(i)
     }
+  }
 }
