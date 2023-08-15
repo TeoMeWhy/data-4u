@@ -32,7 +32,6 @@ class IngestionRawSUS:
         self.dates=[]
         self.set_dates(date_range)
 
-
     def set_dates(self, date_range):
         self.dates = dttools.date_range(date_range[0], date_range[-1], period=self.period)
 
@@ -44,13 +43,17 @@ class IngestionRawSUS:
 
         try:
             resp = urllib.request.urlretrieve(url, file_path)
+
         except:
             print(f"Não foi possível coletar o arquivo.  {uf} | {ano}-{mes}-01")
 
     def get_data_uf(self, uf):
         for i in tqdm(self.dates):
             ano, mes, dia = i.split("-")
-            ano = ano[-2:]
+            
+            if self.period == 'monthly':
+                ano = ano[-2:]
+
             self.get_data_uf_ano_mes(uf, ano, mes)
 
 
@@ -59,30 +62,25 @@ class IngestionRawSUS:
             pool.map(self.get_data_uf, self.ufs)
 
 
+# COMMAND ----------
+
+datasource = dbutils.widgets.get("datasource")
+dt_start = dbutils.widgets.get("dt_start")
+dt_stop = dbutils.widgets.get("dt_stop")
+delay = int(dbutils.widgets.get("delay"))
+
+dt_start = (datetime.datetime.strptime(dt_start, "%Y-%m-%d") - relativedelta(months=delay)).strftime("%Y-%m-01")
+
+
 ufs = ["RO", "AC", "AM", "RR","PA",
        "AP", "TO", "MA", "PI", "CE",
        "RN", "PB", "PE", "AL", "SE",
        "BA", "MG", "ES", "RJ", "SP",
        "PR", "SC", "RS", "MS", "MT",
-       "GO","DF"]
+       "GO", "DF"]
 
+ufs.sort(reverse=True)
 
-# COMMAND ----------
-
-# datasource = dbutils.widgets.get("datasource")
-datasource = 'sihsus'
-
-# dt_start = dbutils.widgets.get("dt_start")
-dt_start = '2023-08-01'
-
-# dt_stop = dbutils.widgets.get("dt_stop")
-dt_stop = '2023-08-01'
-
-# delay = int(dbutils.widgets.get("delay"))
-delay = 3
-
-
-dt_start = (datetime.datetime.strptime(dt_start, "%Y-%m-%d") - relativedelta(months=delay)).strftime("%Y-%m-01")
 
 ing = IngestionRawSUS(ufs=ufs,
                       date_range=[dt_start, dt_stop],
@@ -92,7 +90,3 @@ ing = IngestionRawSUS(ufs=ufs,
 # COMMAND ----------
 
 ing.auto_execute()
-
-# COMMAND ----------
-
-
