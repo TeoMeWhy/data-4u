@@ -17,8 +17,11 @@ partition_fields = dbutils.widgets.get('partition_fields').split(',') # parametr
 
 date_start = dbutils.widgets.get('date_start')                        # parametro
 date_stop = dbutils.widgets.get('date_stop')                          # parametro
-monthly = dbutils.widgets.get('monthly') == 'True'                    # parametro
-dates = dttools.date_range(date_start, date_stop, monthly=monthly)
+period = 'monthly' if dbutils.widgets.get('monthly') == 'True' else 'daily'
+
+
+# parametro
+dates = dttools.date_range(date_start, date_stop, period=period)
 
 query = dbtools.import_query(f'etl/{table}.sql')
 
