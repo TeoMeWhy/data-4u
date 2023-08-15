@@ -96,10 +96,10 @@
             }
         },
         {
-            "task_key": "bronze_ingestion",
+            "task_key": "bronze_ingestion_sihsus",
             "depends_on": [
                 {
-                    "task_key": "raw_transform"
+                    "task_key": "raw_transform_sihsus"
                 }
             ],
             "notebook_task": {
@@ -119,7 +119,7 @@
             "task_key": "silver_rd_sih",
             "depends_on": [
                 {
-                    "task_key": "bronze_ingestion"
+                    "task_key": "bronze_ingestion_sihsus"
                 }
             ],
             "notebook_task": {
@@ -139,7 +139,7 @@
             "task_key": "csv_cleaner",
             "depends_on": [
                 {
-                    "task_key": "bronze_ingestion"
+                    "task_key": "bronze_ingestion_sihsus"
                 }
             ],
             "notebook_task": {
