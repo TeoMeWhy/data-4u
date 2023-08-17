@@ -17,7 +17,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
@@ -40,7 +40,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         },
@@ -55,7 +55,7 @@
                 "notebook_path": "src/01.raw/dota/pos_collect",
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         },
@@ -74,7 +74,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         },
@@ -93,7 +93,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         },
@@ -111,7 +111,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         },
@@ -136,7 +136,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         },
@@ -161,7 +161,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         },
@@ -186,7 +186,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
         }
