@@ -116,6 +116,24 @@
             "email_notifications": {}
         },
         {
+            "task_key": "silver_matches_teams",
+            "depends_on": [
+                {
+                    "task_key": "bronze_matches"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/dota/ingestao",
+                "base_parameters": {
+                    "table": "matches_teams"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
             "task_key": "fs_players_30",
             "depends_on": [
                 {
