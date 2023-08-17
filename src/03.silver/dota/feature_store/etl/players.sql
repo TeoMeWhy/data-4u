@@ -1,0 +1,53 @@
+SELECT 
+      '{date}' AS dtReference,
+      idPlayer,
+      count(distinct idMatch) AS nrFrequency,
+      avg(flWin) AS avgWin,
+      COALESCE(avg(nrCampsStacked),0) AS avgCampsStacked,
+      COALESCE(avg(nrCreepsStacked),0) AS avgCreepsStacked,
+      COALESCE(avg(nrKills),0) AS avgKills,
+      COALESCE(avg(nrAssist),0) AS avgAssist,
+      COALESCE(avg(nrDeaths),0) AS avgDeaths,
+      COALESCE(avg(nrDenies),0) AS avgDenies,
+      COALESCE(avg(flFirstbloodClaimed),0) AS avgFirstbloodClaimed,
+      COALESCE(avg(nrGold),0) AS avgGold,
+      COALESCE(avg(nrGoldMinute),0) AS avgGoldMinute,
+      COALESCE(avg(nrGoldSpent),0) AS avgGoldSpent,
+      COALESCE(avg(nrHeroDamage),0) AS avgHeroDamage,
+      COALESCE(avg(nrHeroHealing),0) AS avgHeroHealing,
+      COALESCE(avg(nrLastHits),0) AS avgLastHits,
+      COALESCE(avg(nrLevel),0) AS avgLevel,
+      COALESCE(avg(nrNetWorth),0) AS avgNetWorth,
+      COALESCE(avg(nrRoshansKilled),0) AS avgRoshansKilled,
+      COALESCE(avg(nrRunePicks),0) AS avgRunePicks,
+      COALESCE(avg(nrStunsSec),0) AS avgStunsSec,
+      COALESCE(avg(pctTeamfightParticipation),0) AS avgtTeamfightParticipation,
+      COALESCE(avg(nrTowerDamage),0) AS avgTowerDamage,
+      COALESCE(avg(nrTowerKilled),0) AS avgTowerKilled,
+      COALESCE(avg(nrXpMinute),0) AS avgXpMinute,
+      COALESCE(avg(nrTotalGold),0) AS avgTotalGold,
+      COALESCE(avg(nrTotalXp),0) AS avgTotalXp,
+      COALESCE(avg(nrKillsMinute),0) AS avgKillsMinute,
+      COALESCE(avg(nrKDA),0) AS avgKDA,
+      COALESCE(avg(nrNeutralKills),0) AS avgNeutralKills,
+      COALESCE(avg(nrTowerKills),0) AS avgTowerKills,
+      COALESCE(avg(nrCourierKills),0) AS avgCourierKills,
+      COALESCE(avg(nrLaneKills),0) AS avgLaneKills,
+      COALESCE(avg(nrHeroKills),0) AS avgHeroKills,
+      COALESCE(avg(nrObserverKills),0) AS avgObserverKills,
+      COALESCE(avg(nrSentryKills),0) AS avgSentryKills,
+      COALESCE(avg(nrRoshansKills),0) AS avgRoshansKills,
+      COALESCE(avg(nrNecronomiconKills),0) AS avgNecronomiconKills,
+      COALESCE(avg(nrAncientKills),0) AS avgAncientKills,
+      COALESCE(avg(nrBuybackCount),0) AS avgBuybackCount,
+      COALESCE(avg(nrObserverUses),0) AS avgObserverUses,
+      COALESCE(avg(nrSentryUses),0) AS avgSentryUses,
+      COALESCE(avg(pctLaneEfficiency),0) AS avgLaneEfficiency,
+      COALESCE(avg(nrPurchaseTps),0) AS avgPurchaseTps
+
+FROM silver.dota.matches_players
+
+WHERE dtMatch >= '{date}' - INTERVAL {window} DAY
+AND dtMatch < '{date}'
+
+GROUP BY dtReference, idPlayer
