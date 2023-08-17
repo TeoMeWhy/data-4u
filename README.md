@@ -4,6 +4,8 @@ Repositório destinado a adição de dados no datalake mantido pelo canal [Téo 
 
 Todos os códigos necessários e informações básicas sobre os dados serão disponibilizados nestes repositório.
 
+Estes dados são disponíveis em um datalake construido utilizando o Databricks com AWS. Todos os inscritos no canal [Téo Me Why](twitch.tv/teomewhy) tem acesso ao Datalake.
+
 ## Dados existentes
 
 |Nome|Contexto|Fonte|
