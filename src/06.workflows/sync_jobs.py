@@ -9,7 +9,7 @@ from tqdm import tqdm
 
 # %%
 
-dotenv.load_dotenv(".env")
+dotenv.load_dotenv(dotenv.find_dotenv(".env"))
 DATABRICKS_WORKSPACE_TOKEN = os.getenv("DATABRICKS_WORKSPACE_TOKEN")
 DATABRICKS_WORKSPACE_URL = os.getenv("DATABRICKS_WORKSPACE_URL")
 
@@ -77,3 +77,6 @@ for i in tqdm(jobs_files):
     job_settings = import_json(i)
     job_name = i.split(".")[0]
     resp = create_or_update_job(job_name, job_settings, df_jobs, job_client)
+
+    if resp.status_code != 200:
+        print(i, resp.text)
