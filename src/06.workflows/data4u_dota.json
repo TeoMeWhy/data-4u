@@ -189,6 +189,81 @@
             "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
+        },
+        {
+            "task_key": "fs_players_hero_30",
+            "depends_on": [
+                {
+                    "task_key": "silver_matches_players"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/dota/feature_store/fs_ingestao",
+                "base_parameters": {
+                    "table": "players_hero",
+                    "window": "30",
+                    "description": "Feature Store de jogadores profissionais com suas estatísticas sumarizadas em nível de herói (D30)",
+                    "id_fields": "dtReference,idPlayer,idHero",
+                    "partition_fields": "dtReference",
+                    "date_start": "{{start_date}}",
+                    "date_stop": "{{start_date}}",
+                    "monthly": "False"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "fs_players_hero_90",
+            "depends_on": [
+                {
+                    "task_key": "silver_matches_players"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/dota/feature_store/fs_ingestao",
+                "base_parameters": {
+                    "table": "players_hero",
+                    "window": "90",
+                    "description": "Feature Store de jogadores profissionais com suas estatísticas sumarizadas em nível de herói (D90)",
+                    "id_fields": "dtReference,idPlayer,idHero",
+                    "partition_fields": "dtReference",
+                    "date_start": "{{start_date}}",
+                    "date_stop": "{{start_date}}",
+                    "monthly": "False"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "fs_players_hero_180",
+            "depends_on": [
+                {
+                    "task_key": "silver_matches_players"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/dota/feature_store/fs_ingestao",
+                "base_parameters": {
+                    "table": "players_hero",
+                    "window": "180",
+                    "description": "Feature Store de jogadores profissionais com suas estatísticas sumarizadas em nível de herói (D180)",
+                    "id_fields": "dtReference,idPlayer,idHero",
+                    "partition_fields": "dtReference",
+                    "date_start": "{{start_date}}",
+                    "date_stop": "{{start_date}}",
+                    "monthly": "False"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {}
         }
     ],
     "git_source": {
