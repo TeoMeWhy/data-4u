@@ -6,6 +6,8 @@ Todos os códigos necessários e informações básicas sobre os dados serão di
 
 Estes dados são disponíveis em um datalake construido utilizando o Databricks com AWS. Todos os inscritos no canal [Téo Me Why](twitch.tv/teomewhy) tem acesso ao Datalake.
 
+<img src="https://i.ibb.co/QY2yQ9q/data4u.jpg" alt="data4u" border="0" width=400>
+
 ## Dados existentes
 
 |Nome|Contexto|Fonte|
