@@ -16,6 +16,21 @@ Todos os códigos necessários e informações básicas sobre os dados serão di
 
 ## Estrutura do projeto
 
+Para consultar os dados seguimos o padrão: `{catálogo}.{database}.{tabela}´.
+
+Assim, temos 3 catálogos diferentes:
+
+Bronze: Dados brutos a partir das fontes em formato Delta
+Silver: Dados padronizados de forma mais fácil de leitura e utilização
+Gold: Dados agregados em formato de relatórios para serem utilizados em ferramentas de visualização
+
+Você pode consumir os dados da seguinte maneira com SQL:
+
+```sql
+SELECT *
+FROM silver.olist.pedido
+```
+
 ## Como solicitar novos dados?
 
 Abra uma issue neste projeto com o seguinte template:
