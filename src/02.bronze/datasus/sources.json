@@ -1,0 +1,11 @@
+{
+    "sinasc":{
+        "path_full_load": "/mnt/datalake/datasus/sinasc/parquet",
+        "path_incremental": "/mnt/datalake/datasus/sinasc/parquet",
+        "file_format": "parquet",
+        "id_fields": ["IDSINASC"],
+        "timestamp_field":["DATAHORANASC"],
+        "partition_fields":[],
+        "read_options":{}
+    }
+}
