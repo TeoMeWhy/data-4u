@@ -4,7 +4,16 @@
         "path_incremental": "/mnt/datalake/datasus/sinasc/parquet",
         "file_format": "parquet",
         "id_fields": ["IDSINASC"],
-        "timestamp_field":["DATAHORANASC"],
+        "timestamp_field":"DATAHORANASC",
+        "partition_fields":[],
+        "read_options":{}
+    },
+    "sihsus":{
+        "path_full_load":"/mnt/datalake/datasus/sihsus/parquet",
+        "path_incremental":"/mnt/datalake/datasus/sihsus/parquet",
+        "file_format":"parquet",
+        "id_fields":["N_AIH", "DT_SAIDA", "IDENT"],
+        "timestamp_field":"DT_SAIDA",
         "partition_fields":[],
         "read_options":{}
     }
