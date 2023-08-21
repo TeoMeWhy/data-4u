@@ -12,7 +12,7 @@ import json
 # COMMAND ----------
 
 # DBTITLE 1,Setup
-table_name="sinasc"
+table_name=dbutils.widgets.get("datasource")
 database_name='bronze.datasus'
 
 with open("sources.json", "r") as open_file:
