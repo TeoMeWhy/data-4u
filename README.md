@@ -4,15 +4,36 @@ Repositório destinado a adição de dados no datalake mantido pelo canal [Téo 
 
 Todos os códigos necessários e informações básicas sobre os dados serão disponibilizados nestes repositório.
 
+Estes dados são disponíveis em um datalake construido utilizando o Databricks com AWS. Todos os inscritos no canal [Téo Me Why](twitch.tv/teomewhy) tem acesso ao Datalake.
+
+<img src="https://i.ibb.co/QY2yQ9q/data4u.jpg" alt="data4u" border="0" width=400>
+
 ## Dados existentes
 
-|Nome|Contexto|Fonte|Schema|
-|---|---|---|---|
-|Censo escolar|Microdados do Censo Escolar da Educacação Básica|[:link:](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/censo-escolar)|bronze_censo_escolar|
-|Enem|Microdados do Enem|[:link:](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem)|bronze_enem|
-|Gamers Club|Estatísticas de partidas, medalhas, players|[:link:](https://www.kaggle.com/datasets/gamersclub/brazilian-csgo-plataform-dataset-by-gamers-club)|bronze_gc|
-|Olist|Vendas e-commerce|[:link:](https://www.kaggle.com/datasets/gamersclub/brazilian-csgo-plataform-dataset-by-gamers-club)|bronze_olist|
-|TSE|Eleições|[:link:](https://dadosabertos.tse.jus.br/dataset/)|bronze_tse, silver_tse|
+|Nome|Contexto|Fonte|
+|---|---|---|
+|DataSUS|Dados do Sistema de Informação Hospitalar (SIH) e de Nascidos Vivos (SINASC)| [datasus.saude.gov.br](https://datasus.saude.gov.br/transferencia-de-arquivos/)|
+|Dota2|Dados de partidas profissionais de Dota2 desde 2012| [opendota.com](https://www.opendota.com/)|
+|IGDB|Dados de jogos digitais, franquias, empresas desenvolvedoras e publicadoras| [igdb.com](https://www.igdb.com/)|
+|Olist|Dados de transações realizadas em um ecommerce|[kaggle.com/datasets/olistbr/brazilian-ecommerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)|
+|Tabnews|Dados de posts realizados no TabNews|[tabnews.com.br](https://tabnews.com.br/)|
+
+## Estrutura do projeto
+
+Para consultar os dados seguimos o padrão: `{catálogo}.{database}.{tabela}´.
+
+Assim, temos 3 catálogos diferentes:
+
+Bronze: Dados brutos a partir das fontes em formato Delta
+Silver: Dados padronizados de forma mais fácil de leitura e utilização
+Gold: Dados agregados em formato de relatórios para serem utilizados em ferramentas de visualização
+
+Você pode consumir os dados da seguinte maneira com SQL:
+
+```sql
+SELECT *
+FROM silver.olist.pedido
+```
 
 ## Como solicitar novos dados?
 

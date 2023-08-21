@@ -19,7 +19,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
@@ -40,7 +40,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
@@ -63,7 +63,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
@@ -86,7 +86,7 @@
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
@@ -104,9 +104,35 @@
             ],
             "notebook_task": {
                 "notebook_path": "src/02.bronze/datasus/ingestao",
+                "base_parameters": {
+                    "datasource": "sihsus"
+                },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "bronze_ingestion_sinasc",
+            "depends_on": [
+                {
+                    "task_key": "raw_transform_sinasc"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/02.bronze/datasus/ingestao",
+                "base_parameters": {
+                    "datasource": "sinasc"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
@@ -126,7 +152,7 @@
                 "notebook_path": "src/03.silver/datasus/rd_sih",
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
@@ -136,7 +162,7 @@
             }
         },
         {
-            "task_key": "csv_cleaner",
+            "task_key": "csv_cleaner_sihsus",
             "depends_on": [
                 {
                     "task_key": "bronze_ingestion_sihsus"
@@ -145,11 +171,34 @@
             "notebook_task": {
                 "notebook_path": "src/05.cleaning/datasus/raw_cleaner",
                 "base_parameters": {
-                    "path": "/mnt/datalake/datasus/rd/csv/"
+                    "path": "/mnt/datalake/datasus/sihsus/parquet/"
                 },
                 "source": "GIT"
             },
-            "existing_cluster_id": "0523-124114-7ef5b8u0",
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {},
+            "notification_settings": {
+                "no_alert_for_skipped_runs": false,
+                "no_alert_for_canceled_runs": false,
+                "alert_on_last_attempt": false
+            }
+        },
+        {
+            "task_key": "csv_cleaner_sinasc",
+            "depends_on": [
+                {
+                    "task_key": "bronze_ingestion_sinasc"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/05.cleaning/datasus/raw_cleaner",
+                "base_parameters": {
+                    "path": "/mnt/datalake/datasus/sinasc/parquet/"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {},
             "notification_settings": {
