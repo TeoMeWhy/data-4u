@@ -25,6 +25,8 @@ dbc_folder <- paste(partes, collapse = "/")
 parquet_folder <- sub('/dbc/landing', '/parquet/', dbc_folder)
 parquet_folder <- sub('/dbfs', '', parquet_folder)
 
+print(dbc_folder)
+print(parquet_folder)
 
 # COMMAND ----------
 
@@ -40,6 +42,11 @@ etl <- function(f) {
 
 # DBTITLE 1,Execução
 files <- list.files(dbc_folder, full.names=TRUE)
+
+print("Arquivos a serem processados:")
+print(length(files))
+
+# COMMAND ----------
 
 for (i in files){
   print(i)
