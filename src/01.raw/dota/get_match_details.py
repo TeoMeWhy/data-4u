@@ -1,5 +1,4 @@
 # Databricks notebook source
-# MAGIC %pip install tqdm
 
 # COMMAND ----------
 
