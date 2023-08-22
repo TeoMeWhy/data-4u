@@ -359,6 +359,56 @@
             "existing_cluster_id": "0809-155233-nc569ju7",
             "timeout_seconds": 0,
             "email_notifications": {}
+        },
+        {
+            "task_key": "fs_teams_dire",
+            "depends_on": [
+                {
+                    "task_key": "fs_teams"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/dota/feature_store/fs_ingestao",
+                "base_parameters": {
+                    "table": "teams_dire",
+                    "window": "0",
+                    "description": "Feature Store de times Dire com médias das performances dos jogadores",
+                    "id_fields": "dtReference,idTeamDire",
+                    "partition_fields": "dtReference",
+                    "date_start": "{{start_date}}",
+                    "date_stop": "{{start_date}}",
+                    "monthly": "False"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {}
+        },
+        {
+            "task_key": "fs_teams_radiant",
+            "depends_on": [
+                {
+                    "task_key": "fs_teams"
+                }
+            ],
+            "notebook_task": {
+                "notebook_path": "src/03.silver/dota/feature_store/fs_ingestao",
+                "base_parameters": {
+                    "table": "teams_radiant",
+                    "window": "0",
+                    "description": "Feature Store de times Radiant com médias das performances dos jogadores",
+                    "id_fields": "dtReference,idTeamRadiant",
+                    "partition_fields": "dtReference",
+                    "date_start": "{{start_date}}",
+                    "date_stop": "{{start_date}}",
+                    "monthly": "False"
+                },
+                "source": "GIT"
+            },
+            "existing_cluster_id": "0809-155233-nc569ju7",
+            "timeout_seconds": 0,
+            "email_notifications": {}
         }
     ],
     "git_source": {
