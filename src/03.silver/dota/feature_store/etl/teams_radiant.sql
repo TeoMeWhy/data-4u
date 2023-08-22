@@ -133,6 +133,6 @@ SELECT
     avgLaneEfficiency30 AS avgLaneEfficiency30Radiant,
     avgPurchaseTps30 AS avgPurchaseTps30Radiant
 
--- WHERE dtReference = '{date}'
+WHERE dtReference = '{date}'
 
 FROM feature_store.dota_teams_0
