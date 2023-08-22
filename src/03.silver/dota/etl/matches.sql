@@ -2,7 +2,7 @@ WITH tb_match AS (
 
   SELECT
       match_id AS idMatch,
-      radiant_win AS flRadiantWin,
+      CASE WHEN radiant_win = 'true' THEN TRUE ELSE FALSE END AS flRadiantWin,
       from_unixtime(start_time) AS dtMatch,
       date(from_unixtime(start_time)) AS dtMatchDay,
       duration AS nrDurationSeconds,
