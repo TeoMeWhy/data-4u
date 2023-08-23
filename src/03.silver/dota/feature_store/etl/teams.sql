@@ -156,7 +156,7 @@ LEFT JOIN feature_store.dota_players_30 AS t4
 ON t1.dtReference = t4.dtReference
 AND t1.idPlayer = t4.idPlayer
 
--- WHERE t1.dtReference = '{date}'
+WHERE t1.dtReference = '{date}'
 
 GROUP BY t1.dtReference, t1.idTeam, t1.descTeamName, t1.descTeamTag
 ORDER BY t1.idTeam, t1.dtReference
