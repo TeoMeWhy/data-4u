@@ -1,8 +1,13 @@
 SELECT
         t1.dtReference,
-        t1.idTeam,
-        t1.descTeamName,
-        t1.descTeamTag,
+        
+        t1.idTeam AS idTeamRadiant,
+        t1.descTeamName AS descTeamNameRadiant,
+        t1.descTeamTag AS descTeamTagRadiant,
+
+        t1.idTeam AS idTeamDire,
+        t1.descTeamName AS descTeamNameDire,
+        t1.descTeamTag AS descTeamTagDire,
 
         coalesce(avg(t2.nrFrequency),0) AS nrFrequency180,
         coalesce(avg(t2.avgWin),0) AS avgWin180,
@@ -150,7 +155,7 @@ LEFT JOIN feature_store.dota_players_30 AS t4
 ON t1.dtReference = t4.dtReference
 AND t1.idPlayer = t4.idPlayer
 
-WHERE t1.dtReference = '{date}'
+-- WHERE t1.dtReference = '{date}'
 
 GROUP BY t1.dtReference, t1.idTeam, t1.descTeamName, t1.descTeamTag
 ORDER BY t1.idTeam, t1.dtReference
