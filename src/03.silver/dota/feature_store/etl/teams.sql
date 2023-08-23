@@ -1,6 +1,7 @@
 SELECT
         t1.dtReference,
-        
+        t1.idTeam,
+
         t1.idTeam AS idTeamRadiant,
         t1.descTeamName AS descTeamNameRadiant,
         t1.descTeamTag AS descTeamTagRadiant,
