@@ -1,8 +1,8 @@
 SELECT idTeam,
-       descTeamName,
+       TRIM(descTeamName) AS descTeamName,
        descTeamTag,
        urlteamLogo
 
 FROM silver.dota.matches_teams
 
-QUALIFY ROW_NUMBER() OVER (PARTITION BY descTeamName ORDER BY dtMatch DESC) = 1
+QUALIFY ROW_NUMBER() OVER (PARTITION BY TRIM(descTeamName) ORDER BY dtMatch DESC) = 1
