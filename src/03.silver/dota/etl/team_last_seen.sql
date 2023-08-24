@@ -5,4 +5,4 @@ SELECT idTeam,
 
 FROM silver.dota.matches_teams
 
-QUALIFY ROW_NUMBER() OVER (PARTITION BY descTeamName ORDER BY dtMatch) = 1
+QUALIFY ROW_NUMBER() OVER (PARTITION BY descTeamName ORDER BY dtMatch DESC) = 1
