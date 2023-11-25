@@ -3,7 +3,7 @@ WITH tb_explode AS (
   SELECT explode(players) as players
   FROM {table}
 
-),
+)
 
 SELECT players.*
 FROM tb_explode
