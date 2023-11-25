@@ -46,6 +46,9 @@ if not dbtools.table_exists(spark, database_name, table_name):
 else:
     print("Tabela já existente")
 
+print(ing.query)
+print(ing.schema)
+
 # COMMAND ----------
 
 stream = ing.process_stream()
