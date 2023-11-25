@@ -1,5 +1,6 @@
 # Databricks notebook source
 # DBTITLE 1,Imports
+
 from databricks import feature_store
 
 import sys
@@ -9,15 +10,21 @@ sys.path.insert(0, '../../../../lib/')
 import dbtools
 
 import pandas as pd
+import numpy as np
+
+pd.set_option('display.max_rows', 1000)
 
 from sklearn import model_selection
 from sklearn import ensemble
 from sklearn import pipeline
 from sklearn import tree
 from sklearn import metrics
+from sklearn import preprocessing
 
 from feature_engine import encoding
 from feature_engine import imputation
+from feature_engine import creation
+from feature_engine import selection
 
 import lightgbm as lgb
 
@@ -29,7 +36,6 @@ import matplotlib.pyplot as plt
 # COMMAND ----------
 
 # DBTITLE 1,Lookups e Target
-
 query = dbtools.import_query("target.sql")
 df = spark.sql(query)
 
@@ -63,16 +69,14 @@ training_set = fs_client.create_training_set(
 )
 
 training_df = (training_set.load_df()
-                           .filter('nrFrequency180Radiant > 10 and nrFrequency180Dire > 10')
+                           .filter('avgFrequency180Radiant > 10 and avgFrequency180Dire > 10')
+                           .filter('minFrequency30Radiant > 0 and minFrequency30Dire > 0')
                            .toPandas())
 
 # COMMAND ----------
 
 # DBTITLE 1,Modelagem
-to_remove = set(['descTeamNameRadiant', 'descTeamTagRadiant',
-                 'descTeamTagDire','descTeamNameDire'])
-
-features = list(set(training_df.columns[4:-1]) - to_remove)
+features = training_df.columns[4:-1]
 target = 'flRadiantWin'
 
 X_train, X_test, y_train, y_test = model_selection.train_test_split(training_df[features],
@@ -82,8 +86,8 @@ X_train, X_test, y_train, y_test = model_selection.train_test_split(training_df[
 
 # COMMAND ----------
 
-print("Tamanho base de treino:", X_train.shape[0])
-print("Tamanho base de teste:", X_test.shape[0])
+print("Tamanho base de treino:", X_train.shape[0], "| Taxa resposta:", y_train.mean())
+print("Tamanho base de teste:", X_test.shape[0], "| Taxa resposta:", y_test.mean())
 
 # COMMAND ----------
 
@@ -94,17 +98,25 @@ with mlflow.start_run():
     mlflow.sklearn.autolog()
 
     missing_0 = imputation.ArbitraryNumberImputer(arbitrary_number=0,
-                                                  variables=X_test.columns.tolist())
+                                                    variables=X_train.columns.tolist())
+
+    min_max = preprocessing.MinMaxScaler(feature_range=(1,2)).set_output(transform="pandas")
 
     model = lgb.LGBMClassifier(n_jobs=-1, random_state=42)
 
-    params = {"min_child_samples":[900,1000],
-              "learning_rate":[0.01],
-              "n_estimators":[1000],
-              "subsample":[0.9],
-              "max_depth":[15]}
+    params = {
+                "learning_rate":[0.1, 0.01],
+                "n_estimators":[500,1000],
+                "min_child_samples":[250,400,800],
+                "num_leaves": [10,20,30,50,100,200,500]
+            }
 
-    grid = model_selection.GridSearchCV(model, cv=3, param_grid=params, scoring='roc_auc', verbose=3)
+    grid = model_selection.GridSearchCV(model,
+                                        cv=3,
+                                        param_grid=params,
+                                        scoring='roc_auc',
+                                        verbose=3,
+                                        n_jobs=1)
 
     model_pipe = pipeline.Pipeline(
         [('imputer', missing_0),
@@ -152,3 +164,7 @@ plt.show()
 
 scikitplot.metrics.plot_lift_curve(y_true=y_test, y_probas=proba_test)
 plt.show()
+
+# COMMAND ----------
+
+

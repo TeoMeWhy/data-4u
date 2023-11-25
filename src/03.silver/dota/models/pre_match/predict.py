@@ -90,7 +90,7 @@ df_predict = (df.join( df_radiant_fs.alias("radiant"),
 
 # COMMAND ----------
 
-radiant_prob, dire_prob = model.predict_proba(df_predict[df_predict.columns[3:]])[0]*100
+dire_prob, radiant_prob = model.predict_proba(df_predict[model.feature_names_in_])[0]*100
 
 df_dashboard = spark.createDataFrame(
     pd.DataFrame(
@@ -104,3 +104,7 @@ df_dashboard = spark.createDataFrame(
 )
 
 df_dashboard.display()
+
+# COMMAND ----------
+
+df_predict[model.feature_names_in_]
