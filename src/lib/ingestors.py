@@ -148,6 +148,8 @@ class IngestaoBronze:
 
         df_new = self.transform(table_name=f"global_temp.tb_stream_{self.table_name}")
 
+        print(df_new.toPandas().head())
+
         join = " AND ".join(f"d.{i} = n.{i}" for i in self.id_fields)
         (
             delta_table.alias("d")
