@@ -39,15 +39,11 @@ ing = ingestors.IngestaoBronze(
 
 if not dbtools.table_exists(spark, database_name, table_name):
     print("Criando a tabela")
-    df_null = spark.createDataFrame(data=[], schema=ing.schema)
-    ing.save_full(df_null)
+    ing.process_full(df_null)
     dbutils.fs.rm(ing.checkpoint_path, True)
 
 else:
     print("Tabela já existente")
-
-print(ing.query)
-print(ing.schema)
 
 # COMMAND ----------
 
