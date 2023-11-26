@@ -242,31 +242,7 @@
                         },
                         {
                             "metadata": {},
-                            "name": "party_id",
-                            "nullable": true,
-                            "type": "long"
-                        },
-                        {
-                            "metadata": {},
-                            "name": "party_size",
-                            "nullable": true,
-                            "type": "long"
-                        },
-                        {
-                            "metadata": {},
-                            "name": "pings",
-                            "nullable": true,
-                            "type": "long"
-                        },
-                        {
-                            "metadata": {},
                             "name": "pred_vict",
-                            "nullable": true,
-                            "type": "boolean"
-                        },
-                        {
-                            "metadata": {},
-                            "name": "randomed",
                             "nullable": true,
                             "type": "boolean"
                         },
@@ -292,7 +268,7 @@
                             "metadata": {},
                             "name": "teamfight_participation",
                             "nullable": true,
-                            "type": "string"
+                            "type": "float"
                         },
                         {
                             "metadata": {},
@@ -412,13 +388,13 @@
                             "metadata": {},
                             "name": "kills_per_min",
                             "nullable": true,
-                            "type": "double"
+                            "type": "float"
                         },
                         {
                             "metadata": {},
                             "name": "kda",
                             "nullable": true,
-                            "type": "long"
+                            "type": "float"
                         },
                         {
                             "metadata": {},
