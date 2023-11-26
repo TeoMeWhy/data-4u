@@ -39,7 +39,7 @@ ing = ingestors.IngestaoBronze(
 
 if not dbtools.table_exists(spark, database_name, table_name):
     print("Criando a tabela")
-    ing.process_full(df_null)
+    ing.process_full()
     dbutils.fs.rm(ing.checkpoint_path, True)
 
 else:
