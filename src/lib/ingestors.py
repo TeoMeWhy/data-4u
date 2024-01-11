@@ -117,7 +117,10 @@ class IngestaoBronze:
                         NOW() as ingestion_at
                         FROM {table} """
         ids = ",".join(self.id_fields)
-        window = f"""QUALIFY row_number() OVER (PARTITION BY {ids} ORDER BY {self.timestamp_field} DESC) = 1"""
+        if len(self.partition_fields) > 0:
+            window = f"""QUALIFY row_number() OVER (PARTITION BY {ids} ORDER BY {self.timestamp_field} DESC) = 1"""
+        else:
+            window = ""
         return base_query + window
 
     def load_stream(self):

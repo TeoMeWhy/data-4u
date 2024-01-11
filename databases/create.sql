@@ -11,6 +11,12 @@ CREATE DATABASE IF NOT EXISTS silver.dota;
 
 -- COMMAND ----------
 
+-- DBTITLE 1,Gamesclub
+CREATE DATABASE IF NOT EXISTS bronze.gamersclub;
+CREATE DATABASE IF NOT EXISTS silver.gamersclub;
+
+-- COMMAND ----------
+
 -- DBTITLE 1,IBGE
 CREATE DATABASE IF NOT EXISTS bronze.ibge;
 CREATE DATABASE IF NOT EXISTS silver.ibge;
