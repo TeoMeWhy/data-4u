@@ -26,9 +26,9 @@ Para consultar os dados seguimos o padrão: `{catálogo}.{database}.{tabela}´.
 
 Assim, temos 3 catálogos diferentes:
 
-Bronze: Dados brutos a partir das fontes em formato Delta
-Silver: Dados padronizados de forma mais fácil de leitura e utilização
-Gold: Dados agregados em formato de relatórios para serem utilizados em ferramentas de visualização
+- Bronze: Dados brutos a partir das fontes em formato Delta
+- Silver: Dados padronizados de forma mais fácil de leitura e utilização
+- Gold: Dados agregados em formato de relatórios para serem utilizados em ferramentas de visualização
 
 Você pode consumir os dados da seguinte maneira com SQL:
 
