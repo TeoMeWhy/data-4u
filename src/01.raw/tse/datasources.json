@@ -1,0 +1,50 @@
+{
+  "candidatos":{
+    "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_{ano}.zip",
+    "path": "/dbfs/mnt/datalake/tse/candidatos/",
+    "sufix_not_remove": ["BRASIL.csv"],
+    "sufix_manage": ["csv", "txt"],
+    "anos": {
+      "start": 2018,
+      "stop": 2022,
+      "step": 2
+    }
+  },
+  
+  "bem_candidatos":{
+    "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/bem_candidato/bem_candidato_{ano}.zip",
+    "path": "/dbfs/mnt/datalake/tse/bem_candidatos/",
+    "sufix_not_remove": ["BRASIL.csv"],
+    "sufix_manage": ["csv", "txt"],
+    "anos": {
+      "start": 2000,
+      "stop": 2022,
+      "step": 2
+    }
+  },
+
+  "votacao":{
+    "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_{ano}_BR.zip",
+    "path": "/dbfs/mnt/datalake/tse/votacao/",
+    "sufix_not_remove": [".csv", ".txt"],
+    "sufix_manage": ["csv", "txt"],
+    "anos": {
+      "start": 2002,
+      "stop": 2022,
+      "step": 4
+    }
+  },
+
+  "votacao_uf":{
+    "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_{ano}_{uf}.zip",
+    "path": "/dbfs/mnt/datalake/tse/votacao/",
+    "sufix_not_remove": [".csv", ".txt"],
+    "sufix_manage": ["csv", "txt"],
+    "anos": {
+      "start": 2000,
+      "stop": 2022,
+      "step": 4
+    }
+  }
+}
+
