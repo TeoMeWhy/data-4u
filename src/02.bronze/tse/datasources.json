@@ -1,0 +1,69 @@
+{
+  "candidatos":{
+    "file_format": "csv",
+    "id_fields":[
+      "ANO_ELEICAO",
+      "CD_ELEICAO",
+      "NR_TURNO",
+      "SG_UF",
+      "NM_UE",
+      "CD_CARGO",
+      "SQ_CANDIDATO",
+      "NR_CANDIDATO"
+    ],
+    "partition_fields" : ["ANO_ELEICAO", "SG_UF"],
+    "path" : "/mnt/datalake/tse/candidatos/{file_format}",
+    "read_options": {
+      "sep":";",
+      "header":"true",
+      "encoding": "latin1"
+    },
+    "timestamp_field": "ANO_ELEICAO"
+  },
+  
+  "bem_candidatos":{
+    "file_format": "csv",
+    "id_fields":[
+      "ANO_ELEICAO",
+      "CD_ELEICAO",
+      "SG_UF",
+      "SG_UE",
+      "SQ_CANDIDATO",
+      "NR_ORDEM_CANDIDATO"
+    ],
+    "partition_fields" : ["ANO_ELEICAO", "SG_UF"],
+    "path" : "/mnt/datalake/tse/bem_candidatos/{file_format}",
+    "read_options": {
+      "sep":";",
+      "header":"true",
+      "encoding": "latin1",
+      "multiLine": "true"
+    },
+    "timestamp_field": "ANO_ELEICAO"
+  },
+
+  "votacao":{
+    "file_format": "csv",
+    "id_fields" : [
+      "ANO_ELEICAO",
+      "NR_TURNO",
+      "CD_ELEICAO",
+      "SG_UF",
+      "CD_MUNICIPIO",
+      "NR_ZONA",
+      "NR_SECAO",
+      "CD_CARGO",
+      "NR_VOTAVEL"
+      ],
+    "partition_fields" : ["ANO_ELEICAO", "SG_UF"],
+    "path" : "/mnt/datalake/tse/votacao/{file_format}",
+    "read_options": {
+      "sep":";",
+      "header":"true",
+      "encoding": "latin1"
+    },
+    "timestamp_field": "ANO_ELEICAO"
+  }
+}
+
+
